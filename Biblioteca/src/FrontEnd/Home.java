@@ -10,8 +10,9 @@ import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Rob77
+ * Created Mar 19, 2019
+ * @author Roberto Gomez
+ * @version 2
  */
 public class Home extends javax.swing.JFrame {
 
@@ -172,7 +173,7 @@ public class Home extends javax.swing.JFrame {
     
     private void btn_addMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addMembersActionPerformed
         homeDesktop.removeAll();
-        AddMember am = new AddMember();
+        TheMembers.AddMember am = new TheMembers.AddMember();
         homeDesktop.add(am).setVisible(true);
         
     }//GEN-LAST:event_btn_addMembersActionPerformed
