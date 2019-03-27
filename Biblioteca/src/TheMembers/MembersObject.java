@@ -17,7 +17,7 @@ public class MembersObject
     private static Scanner x;
     
 // Define STATE
-    public class  Member
+    public static class  Member
     {
         private String accountArray;
         private String firstNameArray;
@@ -29,7 +29,7 @@ public class MembersObject
         private String statusArray;
 
 // Define CONSTRUCTOR
-        public Member(String Id, String FName, String LName, String DoB, String Gender, String Email, String Phone, String Status)
+        public Member (String Id, String FName, String LName, String DoB, String Gender, String Email, String Phone, String Status)
         {
             this.accountArray = Id;
             this.firstNameArray = FName;

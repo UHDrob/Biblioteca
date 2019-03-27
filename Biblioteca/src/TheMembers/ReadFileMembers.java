@@ -8,6 +8,7 @@
 package TheMembers;
 
 import FileOperations.*;
+import TheMembers.MembersObject.Member;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +28,7 @@ public class ReadFileMembers
     // Mar 23, 2019 Roberto : ReadFileMembers set filename and confirm for debugging
         public void ReadFileMembers()
         {
-            Scanner keyboard = new Scanner(System.in);
+            // Scanner keyboard = new Scanner(System.in);
                         
             // the text file will be members.txt
             String fileName = "member.txt";
@@ -39,7 +40,7 @@ public class ReadFileMembers
         // Feb 18, 2019 Roberto : Read the data and display on the Console
       
         // Mar 23, 3019 Roberto : Intialize fileIn to Empty    
-        Scanner fileIn = null; 
+         Scanner fileIn = null; 
             try
             {
                 // Attempt to open the file
@@ -69,7 +70,7 @@ public class ReadFileMembers
             // }
             
             // Load to ArrayList
-            Scanner x;
+            //Scanner x;
             boolean found = false;
             String memberID = ""; 
             String firstName = ""; 
@@ -80,12 +81,15 @@ public class ReadFileMembers
             String phoneNumber = "";
             String status = "";
             
+            //ArrayList<Member> list = new ArrayList<Member>;
+            
             try
             {
-                x = new Scanner(new File(fileName));
+                Scanner x = new Scanner(new File(fileName));
                 x.useDelimiter("[,\n]");
                 while(x.hasNext() )
                 {
+                    /*
                     memberID = x.next();
                     firstName = x.next();
                     lastName = x.next();
@@ -94,8 +98,22 @@ public class ReadFileMembers
                     email = x.next();
                     phoneNumber = x.next();
                     status = x.next();
+                    
+                   // ArrayList<String>
                     System.out.println(memberID + " " + firstName + " " + lastName + " " + dob
                              + " " + gender + " " + email + " " + phoneNumber + " " + status);
+                    
+                    */
+                      
+           
+                 String line = fileIn.nextLine();  // read the line
+                 String [] lineArray = line.split(","); // delimiter betweeen fields
+                 for (String s : lineArray)
+                {
+                    System.out.print(s + " "); // add space between fields for output
+                 }
+                System.out.println();
+           
                 }
             }
             catch(Exception e)

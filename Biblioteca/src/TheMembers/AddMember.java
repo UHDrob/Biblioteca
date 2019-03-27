@@ -1,6 +1,6 @@
 /*
  * MEMBERS FORM
- * FIELDS:
+ * FIELDS:  Accounts, First Name, Last Name, Birthday, Gender, Email, Phone, Status
  * FILE:   members.txt
  */
 package TheMembers;
@@ -12,7 +12,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,9 +44,9 @@ public class AddMember extends javax.swing.JInternalFrame {
     private static Scanner x;
     
     
-    /*
+  /*  
 // Define STATE
-    public class  Member
+    public class  Mbr
     {
         public String accountArray;
         public String firstNameArray;
@@ -56,7 +59,7 @@ public class AddMember extends javax.swing.JInternalFrame {
     
    
     // Define CONSTRUCTOR
-        public Member(String Id, String FName, String LName, String DoB, String Gender, String Email, String Phone, String Status)
+        public Mbr(String Id, String FName, String LName, String DoB, String Gender, String Email, String Phone, String Status)
         {
             this.accountArray = Id;
             this.firstNameArray = FName;
@@ -69,7 +72,7 @@ public class AddMember extends javax.swing.JInternalFrame {
         } 
         
     }
-    */
+*/
     
    // Feb 19, 2019 Roberto: This section search for a Record in the file by Employee ID
         public static void searchRecord (String searchterm, String filepath) throws FileNotFoundException
@@ -135,9 +138,9 @@ public class AddMember extends javax.swing.JInternalFrame {
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
                 
-                pw.println(account + "," + FirstName + "," + LastName + ","
-                        + Birthday + "," + Gender + "," + Email + ","
-                        + Phone + "," + Status + ",");
+                pw.println(account + ", " + FirstName + ", " + LastName + ", "
+                        + Birthday + ", " + Gender + ", " + Email + ", "
+                        + Phone + ", " + Status + "\n");
                 pw.flush();
                 pw.close();
                 
@@ -177,7 +180,7 @@ public class AddMember extends javax.swing.JInternalFrame {
         txt_account = new javax.swing.JTextField();
         txt_firstName = new javax.swing.JTextField();
         txt_lastName = new javax.swing.JTextField();
-        date_birthday = new datechooser.beans.DateChooserCombo();
+        txt_birthday = new com.toedter.calendar.JDateChooser();
         combo_gender = new javax.swing.JComboBox<>();
         txt_email = new javax.swing.JTextField();
         txt_phone = new javax.swing.JTextField();
@@ -216,23 +219,23 @@ public class AddMember extends javax.swing.JInternalFrame {
 
         lbl_account.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_account.setText("Account ");
-        jPanel1.add(lbl_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel1.add(lbl_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         lbl_firstName.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_firstName.setText("First Name");
-        jPanel1.add(lbl_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jPanel1.add(lbl_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         lbl_lastName.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_lastName.setText("Last Name");
-        jPanel1.add(lbl_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        jPanel1.add(lbl_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         lbl_Birthday.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_Birthday.setText("Birthday");
-        jPanel1.add(lbl_Birthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jPanel1.add(lbl_Birthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         lbl_gender.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_gender.setText("Gender");
-        jPanel1.add(lbl_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+        jPanel1.add(lbl_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         lbl_email.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_email.setText("Email");
@@ -248,15 +251,18 @@ public class AddMember extends javax.swing.JInternalFrame {
         jPanel1.add(txt_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 160, 30));
         jPanel1.add(txt_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 160, 30));
         jPanel1.add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 160, 30));
-        jPanel1.add(date_birthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 199, -1, 30));
 
-        combo_gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "active", "past due", "cancel" }));
-        jPanel1.add(combo_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 174, 150, 30));
+        txt_birthday.setDateFormatString("MM, dd, yyyy");
+        txt_birthday.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
+        jPanel1.add(txt_birthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 150, 30));
+
+        combo_gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "male", "female" }));
+        jPanel1.add(combo_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 150, 30));
         jPanel1.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 160, 30));
         jPanel1.add(txt_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 160, 30));
 
-        combo_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "male", "female" }));
-        jPanel1.add(combo_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 150, 30));
+        combo_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "active", "past due", "cancel" }));
+        jPanel1.add(combo_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 174, 150, 30));
 
         btn_clear.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_clear.setText("CLEAR");
@@ -334,15 +340,23 @@ public class AddMember extends javax.swing.JInternalFrame {
             String account = txt_account.getText();
             String firstname = txt_firstName.getText();
             String lastname = txt_lastName.getText();
-            String birthday = date_birthday.getText();
-            String gender = combo_status.toString();
+            
+            
+            // String birthday = txt_birthday.getText();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy"); //  yyyy-MM-dd
+            String addDate = dateFormat.format(txt_birthday.getDate());
+            String birthday = addDate;
+            
+            String gender = combo_gender.getSelectedItem().toString();
+            //String gender = combo_gender.toString();
             String email = txt_email.getText();
             String phone = txt_phone.getText();
-            String status = combo_status.toString();
+            String status = combo_status.getSelectedItem().toString();
              
             saveRecord(account, firstname, lastname, birthday, gender, email, phone, status, filepath);
             
             JOptionPane.showMessageDialog(null, "New Member has been created");
+            Show_Members_In_JTable();
         }
         else
         {
@@ -398,13 +412,11 @@ public class AddMember extends javax.swing.JInternalFrame {
             String phone = "";
             String status = "";
             
-        
-
-            ArrayList<Member> list = new ArrayList<Member>();
-                 list = null;
+            ArrayList<Member> memberArrayList = new ArrayList<Member>();
+            // ArrayList<Items> list = new ArrayList<Items>();
             try
             {
-                Member mbr = null;
+               
                 x = new Scanner(new File(filepath));
                 x.useDelimiter("[,\n]");
 
@@ -419,23 +431,28 @@ public class AddMember extends javax.swing.JInternalFrame {
                     phone = x.next();
                     status = x.next();
                    
-                    mbr = new Member (acct, firstName, lastName, birthday, gender, email, phone, status);
-                    
-                    list.add(mbr);
+                  
+                    Member line = new Member(acct, firstName, lastName, birthday, gender, email, phone, status);
+                    memberArrayList.add(line);
+  
+
                 }
             }
             catch(Exception e)
             {
-                JOptionPane.showMessageDialog(null, "ArrayList Error" + e);
+                //JOptionPane.showMessageDialog(null, "ArrayList Error HERE" + e); // e
             }
 
-            return list;
+            return memberArrayList;
+        
         }
         
     // Feb 19, 2019 Roberto: For the ArrayList Part C 
         public void Show_Members_In_JTable()
     {
         DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
+        model.setRowCount(0);
+        //DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
         ArrayList<Member> list = getListMembers();
         
         Object rowData[] = new Object[8];
@@ -445,7 +462,7 @@ public class AddMember extends javax.swing.JInternalFrame {
             rowData[1] = list.get(i).getfirstname();
             rowData[2] = list.get(i).getlastname();
             rowData[3] = list.get(i).getbirthday();
-            rowData[4] = list.get(i).getemail();
+            rowData[4] = list.get(i).getgender();
             rowData[5] = list.get(i).getemail();
             rowData[6] = list.get(i).getphone();
             rowData[7] = list.get(i).getstatus();
@@ -515,7 +532,37 @@ public class AddMember extends javax.swing.JInternalFrame {
     public void ShowItem(int index)
     {
                     txt_account.setText(getListMembers().get(index).getaccount());
-                    //System.out.println(getListMembers().get(index).)
+                    txt_firstName.setText(getListMembers().get(index).getfirstname());
+                    txt_lastName.setText(getListMembers().get(index).getlastname());
+                    
+                    // Birthday
+                    try {
+                    Date addDate = null;
+                    addDate = new SimpleDateFormat("MM-dd-yyyy").parse((String)getListMembers().get(index).getbirthday());
+                    txt_birthday.setDate(addDate);     
+ 
+                    } catch (ParseException ex) {
+                            Logger.getLogger(AddMember.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    // Gender
+                    //combo_gender.setSelectedItem(getListMembers().get(index).getgender());  
+                    //combo_gender.setSelectedIndex(2);
+                    if ( getListMembers().get(index).getgender().equals("female"))
+                            {   
+                                combo_gender.setSelectedItem("female");
+                            }
+                    else
+                    {
+                        combo_gender.setSelectedItem("male");
+                    }
+                    // String gender = combo_gender.getSelectedItem().toString();
+                            
+                    txt_email.setText(getListMembers().get(index).getemail());
+                    txt_phone.setText(getListMembers().get(index).getphone());
+                    
+                    // Status
+                    combo_status.setSelectedItem(getListMembers().get(index).getstatus());
     }
         
         /*    
@@ -524,14 +571,7 @@ public class AddMember extends javax.swing.JInternalFrame {
 
             txt_firstName.setText(getMembersList().get(index).getmovietitle());
             
-        try {
-           Date addDate = null;
-            addDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)getMoviesList().get(index).getreleasedate());
-            txt_releasedate.setDate(addDate);
- 
-        } catch (ParseException ex) {
-            Logger.getLogger(Movie_Window.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
             txt_rating.setText(getMovie;
             txt_category.setText(getMoviesList().get(index).getcategory());
             txt_runningtime.setText(getMoviesList().get(index).getrunningtime());
@@ -551,7 +591,6 @@ public class AddMember extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_update;
     private javax.swing.JComboBox<String> combo_gender;
     private javax.swing.JComboBox<String> combo_status;
-    private datechooser.beans.DateChooserCombo date_birthday;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -570,6 +609,7 @@ public class AddMember extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_status;
     private javax.swing.JLabel lbl_titleMembers;
     private javax.swing.JTextField txt_account;
+    private com.toedter.calendar.JDateChooser txt_birthday;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_firstName;
     private javax.swing.JTextField txt_lastName;
