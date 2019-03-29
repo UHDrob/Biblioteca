@@ -1,12 +1,12 @@
 /*
- * MEMBERS FORM
- * FIELDS:  Accounts, First Name, Last Name, Birthday, Gender, Email, Phone, Status
- * FILE:   members.txt
+ * BOOKS FORM
+ * FIELDS:  BookID, Book Title, BarCode, Book Date, Category, Book Type, Publisher, Price
+ * FILE:   book.txt
  */
-package TheMembers;
+package TheBooks;
 
 
-import TheMembers.MembersObject.Member;
+import TheBooks.BooksObject.Book;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,33 +29,33 @@ import javax.swing.table.DefaultTableModel;
  * @author Roberto Gomez
  * @version 2
  */
-public class AddMember extends javax.swing.JInternalFrame {
+public class AddBooks extends javax.swing.JInternalFrame {
 
     /**
      * Feb 19, 2019 Roberto: Creates new form AddMember
      */
-    public AddMember() {
+    public AddBooks() {
         initComponents();
         // Feb 20, 2019 Roberto: Update the Table
-        Show_Members_In_JTable();
+        Show_Books_In_JTable();
     }
     
     // Feb 20 2019 Roberto: This is the file that has all the data for this package
-    String filepath = "member.txt";
+    String filepath = "book.txt";
     private static Scanner x;
     
    // Feb 19, 2019 Roberto: This section search for a Record in the file by Employee ID
         public static void searchRecord (String searchterm, String filepath) throws FileNotFoundException
         {
             boolean found = false;
-            String account = "";
-            String firstName = "";
-            String lastName = "";
-            String birthday;
-            String gender;
-            String email;
-            String phone;
-            String status;
+            String bookid = "";
+            String booktitle = "";
+            String barcode = "";
+            String bookdate;
+            String category;
+            String booktype;
+            String publisher;
+            String bookprice;
             
             try
             {
@@ -64,43 +64,39 @@ public class AddMember extends javax.swing.JInternalFrame {
                 
                 while(x.hasNext() && !found )
                 {
-                    account = x.next();
-                    firstName = x.next();
-                    lastName = x.next();
-                    birthday = x.next();                
-                    gender = x.next();
-                    email = x.next();
-                    phone = x.next();
-                    status = x.next();
+                    bookid = x.next();
+                    booktitle = x.next();
+                    barcode = x.next();
+                    bookdate = x.next();                
+                    category = x.next();
+                    booktype = x.next();
+                    publisher = x.next();
+                    bookprice = x.next();
                     
-                    if ( account.equals(searchterm))
+                    if ( bookid.equals(searchterm))
                     {
                         found = true;
                     }
                 }
                 if (found)
                 {
-                    JOptionPane.showMessageDialog(null, "Account: " + account
-                            + "\nFirst Name: " + firstName
-                            + "\nLast Name: " + lastName);
-                            
+                    JOptionPane.showMessageDialog(null, "Account: " + bookid
+                            + "\nBook Title: " + booktitle
+                            + "\nBarcode: " + barcode);                            
                 }
                 else
                 {
                     JOptionPane.showMessageDialog(null,"record NOT found");
-                }
-                
+                }                
             }
             catch (Exception e)
             {
                 JOptionPane.showMessageDialog(null, "Error");
-            }
-                    
+            }   
         }
     
-    
         // Feb 19, 2019 Roberto: This section will save the new record in the file
-        public static void saveRecord(String account, String FirstName, String LastName, String Birthday, String Gender, String Email, String Phone, String Status, String FilePath)
+        public static void saveRecord(String bID, String bTitle, String bCode, String bDate, String cat, String bType, String pub, String bPrice, String FilePath)
         {
             try
             {
@@ -108,9 +104,9 @@ public class AddMember extends javax.swing.JInternalFrame {
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
                 
-                pw.println(account + ", " + FirstName + ", " + LastName + ", "
-                        + Birthday + ", " + Gender + ", " + Email + ", "
-                        + Phone + ", " + Status + "\n");
+                pw.println(bID + ", " + bTitle + ", " + bCode + ", "
+                        + bDate + ", " + cat + ", " + bType + ", "
+                        + pub + ", " + bPrice + "\n");
                 pw.flush();
                 pw.close();
                 
@@ -126,8 +122,8 @@ public class AddMember extends javax.swing.JInternalFrame {
         public void save(String fileName) throws FileNotFoundException {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(fileName))) 
         {
-         //   for (Club club : clubs)
-         //       pw.println(club.getName());
+         //   for (Book book : books)
+         //       pw.println(book.getName());
         }
 }
         
@@ -141,8 +137,8 @@ public class AddMember extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbl_titleMembers = new javax.swing.JLabel();
-        txt_searchAccount = new javax.swing.JTextField();
+        lbl_titleBooks = new javax.swing.JLabel();
+        txt_searchBookID = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lbl_account = new javax.swing.JLabel();
@@ -153,20 +149,20 @@ public class AddMember extends javax.swing.JInternalFrame {
         lbl_email = new javax.swing.JLabel();
         lbl_phone = new javax.swing.JLabel();
         lbl_status = new javax.swing.JLabel();
-        txt_account = new javax.swing.JTextField();
-        txt_firstName = new javax.swing.JTextField();
-        txt_lastName = new javax.swing.JTextField();
-        txt_birthday = new com.toedter.calendar.JDateChooser();
-        combo_gender = new javax.swing.JComboBox<>();
-        txt_email = new javax.swing.JTextField();
-        txt_phone = new javax.swing.JTextField();
-        combo_status = new javax.swing.JComboBox<>();
+        txt_bookID = new javax.swing.JTextField();
+        txt_bookTitle = new javax.swing.JTextField();
+        txt_barcode = new javax.swing.JTextField();
+        txt_bookDate = new com.toedter.calendar.JDateChooser();
+        combo_category = new javax.swing.JComboBox<>();
+        txt_bookPrice = new javax.swing.JTextField();
+        txt_publisher = new javax.swing.JTextField();
+        combo_bookType = new javax.swing.JComboBox<>();
         btn_clear = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable_Members = new javax.swing.JTable();
+        jTable_Books = new javax.swing.JTable();
         lbl_control = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -176,10 +172,10 @@ public class AddMember extends javax.swing.JInternalFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_titleMembers.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        lbl_titleMembers.setText("Users");
-        jPanel1.add(lbl_titleMembers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
-        jPanel1.add(txt_searchAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 9, 240, 30));
+        lbl_titleBooks.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        lbl_titleBooks.setText("Books");
+        jPanel1.add(lbl_titleBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+        jPanel1.add(txt_searchBookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 9, 240, 30));
 
         btn_search.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_search.setText("SEARCH");
@@ -194,51 +190,51 @@ public class AddMember extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
 
         lbl_account.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_account.setText("Account ");
+        lbl_account.setText("Book ID");
         jPanel1.add(lbl_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         lbl_firstName.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_firstName.setText("First Name");
+        lbl_firstName.setText("Book Title");
         jPanel1.add(lbl_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         lbl_lastName.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_lastName.setText("Last Name");
+        lbl_lastName.setText("Barcode");
         jPanel1.add(lbl_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         lbl_Birthday.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_Birthday.setText("Birthday");
+        lbl_Birthday.setText("Book Date");
         jPanel1.add(lbl_Birthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         lbl_gender.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_gender.setText("Gender");
+        lbl_gender.setText("Category");
         jPanel1.add(lbl_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         lbl_email.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_email.setText("Email");
+        lbl_email.setText("Book Type");
         jPanel1.add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
 
         lbl_phone.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_phone.setText("Phone");
+        lbl_phone.setText("Publisher");
         jPanel1.add(lbl_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
 
         lbl_status.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_status.setText("Status");
+        lbl_status.setText("Book Price");
         jPanel1.add(lbl_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
-        jPanel1.add(txt_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 160, 30));
-        jPanel1.add(txt_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 160, 30));
-        jPanel1.add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 160, 30));
+        jPanel1.add(txt_bookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 160, 30));
+        jPanel1.add(txt_bookTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 160, 30));
+        jPanel1.add(txt_barcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 160, 30));
 
-        txt_birthday.setDateFormatString("MM, dd, yyyy");
-        txt_birthday.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
-        jPanel1.add(txt_birthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 150, 30));
+        txt_bookDate.setDateFormatString("MM, dd, yyyy");
+        txt_bookDate.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
+        jPanel1.add(txt_bookDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 150, 30));
 
-        combo_gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Gender", "male", "female" }));
-        jPanel1.add(combo_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 150, 30));
-        jPanel1.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 160, 30));
-        jPanel1.add(txt_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 160, 30));
+        combo_category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category", "fiction", "non-fiction" }));
+        jPanel1.add(combo_category, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 150, 30));
+        jPanel1.add(txt_bookPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 160, 30));
+        jPanel1.add(txt_publisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 160, 30));
 
-        combo_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "active", "past due", "cancel" }));
-        jPanel1.add(combo_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 174, 150, 30));
+        combo_bookType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "book", "video", "audio" }));
+        jPanel1.add(combo_bookType, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 150, 30));
 
         btn_clear.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_clear.setText("CLEAR");
@@ -247,7 +243,7 @@ public class AddMember extends javax.swing.JInternalFrame {
                 btn_clearActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 150, 40));
+        jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 150, 40));
 
         btn_add.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_add.setText("ADD");
@@ -256,11 +252,11 @@ public class AddMember extends javax.swing.JInternalFrame {
                 btn_addActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 160, 150, 40));
+        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 140, 150, 40));
 
         btn_update.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_update.setText("UPDATE");
-        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 150, 40));
+        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 150, 40));
 
         btn_delete.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_delete.setText("DELETE");
@@ -269,22 +265,22 @@ public class AddMember extends javax.swing.JInternalFrame {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 150, 40));
+        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, 150, 40));
 
-        jTable_Members.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Books.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Account", "First Name", "Last Name", "Birthday", "Gender", "Email", "Phone", "Status"
+                "Book ID", "Book Title", "Barcode", "Book Date", "Category", "Book Type", "Publisher", "Book Price"
             }
         ));
-        jTable_Members.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable_Books.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_MembersMouseClicked(evt);
+                jTable_BooksMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(jTable_Members);
+        jScrollPane3.setViewportView(jTable_Books);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 302, 930, 220));
 
@@ -318,26 +314,24 @@ public class AddMember extends javax.swing.JInternalFrame {
         // Feb 19, 2019 Roberto: This section will add the new record to the file
         if (checkInputs())    // verify the fields are not empty
         {
-            String account = txt_account.getText();
-            String firstname = txt_firstName.getText();
-            String lastname = txt_lastName.getText();
+            String account = txt_bookID.getText();
+            String firstname = txt_bookTitle.getText();
+            String lastname = txt_barcode.getText();
             
-            
-            // String birthday = txt_birthday.getText();
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy"); //  yyyy-MM-dd
-            String addDate = dateFormat.format(txt_birthday.getDate());
+            String addDate = dateFormat.format(txt_bookDate.getDate());
             String birthday = addDate;
             
-            String gender = combo_gender.getSelectedItem().toString();
-            //String gender = combo_gender.toString();
-            String email = txt_email.getText();
-            String phone = txt_phone.getText();
-            String status = combo_status.getSelectedItem().toString();
+            String gender = combo_category.getSelectedItem().toString();
+
+            String email = txt_bookPrice.getText();
+            String phone = txt_publisher.getText();
+            String status = combo_bookType.getSelectedItem().toString();
              
             saveRecord(account, firstname, lastname, birthday, gender, email, phone, status, filepath);
             
-            JOptionPane.showMessageDialog(null, "New Member has been created");
-            Show_Members_In_JTable();
+            JOptionPane.showMessageDialog(null, "New Book has been created");
+            Show_Books_In_JTable();
         }
         else
         {
@@ -347,11 +341,11 @@ public class AddMember extends javax.swing.JInternalFrame {
 
     private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
         // Feb 19, 2019 Roberto: This section will search by Account
-        String searchterm = txt_searchAccount.getText();
+        String searchterm = txt_searchBookID.getText();
         try {
             searchRecord(searchterm, filepath);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(AddMember.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddBooks.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "SEARCH ERROR");
         }
     }//GEN-LAST:event_btn_searchActionPerformed
@@ -360,35 +354,35 @@ public class AddMember extends javax.swing.JInternalFrame {
 
         
         // Feb 19, 2019 Roberto; This section will search by Account
-        txt_account.setText(null);
-        txt_firstName.setText(null);
-        txt_lastName.setText(null);
-        txt_email.setText(null);
-        txt_phone.setText(null);
+        txt_bookID.setText(null);
+        txt_bookTitle.setText(null);
+        txt_barcode.setText(null);
+        txt_bookPrice.setText(null);
+        txt_publisher.setText(null);
         
     }//GEN-LAST:event_btn_clearActionPerformed
 
-    private void jTable_MembersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_MembersMouseClicked
+    private void jTable_BooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_BooksMouseClicked
         // Mar 26, 2019 Roberto:  Selection from table
-        int index = jTable_Members.getSelectedRow();
+        int index = jTable_Books.getSelectedRow();
         ShowItem(index);
-    }//GEN-LAST:event_jTable_MembersMouseClicked
+    }//GEN-LAST:event_jTable_BooksMouseClicked
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        if(!txt_account.getText().equals(""))
+        if(!txt_bookID.getText().equals(""))
         {
-            int index = jTable_Members.getSelectedRow();
-           ((DefaultTableModel)jTable_Members.getModel()).removeRow(index); 
+            int index = jTable_Books.getSelectedRow();
+           ((DefaultTableModel)jTable_Books.getModel()).removeRow(index); 
             JOptionPane.showMessageDialog(null,"Record has been DELETED!");
         }else{
-        JOptionPane.showMessageDialog(null,"Student Not Deleted: No Student ID to Delete");
+        JOptionPane.showMessageDialog(null,"Book Not Deleted: No Book ID to Delete");
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     
     
     // Define BEHAVIOR
-        public ArrayList<Member> getListMembers()
+        public ArrayList<Book> getListMembers()
         {
             String acct = ""; 
             String firstName = ""; 
@@ -399,7 +393,7 @@ public class AddMember extends javax.swing.JInternalFrame {
             String phone = "";
             String status = "";
             
-            ArrayList<Member> memberArrayList = new ArrayList<Member>();
+            ArrayList<Book> bookArrayList = new ArrayList<Book>();
             // ArrayList<Items> list = new ArrayList<Items>();
             try
             {
@@ -417,12 +411,9 @@ public class AddMember extends javax.swing.JInternalFrame {
                     email = x.next();
                     phone = x.next();
                     status = x.next();
-                   
-                  
-                    Member line = new Member(acct, firstName, lastName, birthday, gender, email, phone, status);
-                    memberArrayList.add(line);
-  
-
+                                  
+                    Book line = new Book(acct, firstName, lastName, birthday, gender, email, phone, status);
+                    bookArrayList.add(line);
                 }
             }
             catch(Exception e)
@@ -430,29 +421,29 @@ public class AddMember extends javax.swing.JInternalFrame {
                 //JOptionPane.showMessageDialog(null, "ArrayList Error HERE" + e); // e
             }
 
-            return memberArrayList;
+            return bookArrayList;
         
         }
         
     // Feb 19, 2019 Roberto: For the ArrayList Part C 
-        public void Show_Members_In_JTable()
+        public void Show_Books_In_JTable()
     {
-        DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable_Books.getModel();
         model.setRowCount(0);
         //DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
-        ArrayList<Member> list = getListMembers();
+        ArrayList<Book> list = getListMembers();
         
         Object rowData[] = new Object[8];
         for(int i=0; i < list.size(); i++)
         {
-            rowData[0] = list.get(i).getaccount();
-            rowData[1] = list.get(i).getfirstname();
-            rowData[2] = list.get(i).getlastname();
-            rowData[3] = list.get(i).getbirthday();
-            rowData[4] = list.get(i).getgender();
-            rowData[5] = list.get(i).getemail();
-            rowData[6] = list.get(i).getphone();
-            rowData[7] = list.get(i).getstatus();
+            rowData[0] = list.get(i).getbookid();
+            rowData[1] = list.get(i).getbooktitle();
+            rowData[2] = list.get(i).getbarcode();
+            rowData[3] = list.get(i).getbookday();
+            rowData[4] = list.get(i).getcategory();
+            rowData[5] = list.get(i).getbooktype();
+            rowData[6] = list.get(i).getpublisher();
+            rowData[7] = list.get(i).getbookprice();
             model.addRow(rowData);
         }
         
@@ -500,11 +491,11 @@ public class AddMember extends javax.swing.JInternalFrame {
    // Feb 19 2019 Roberto: Check Input Fields to verify they are not empty
         public boolean checkInputs()
         {
-            if (    txt_account.getText() == null
-                    || txt_firstName.getText() == null
-                    || txt_lastName.getText() == null
-                    || txt_email.getText() == null
-                    || txt_phone.getText() == null)
+            if (    txt_bookID.getText() == null
+                    || txt_bookTitle.getText() == null
+                    || txt_barcode.getText() == null
+                    || txt_bookPrice.getText() == null
+                    || txt_publisher.getText() == null)
             {
                 return false;
             } 
@@ -518,38 +509,32 @@ public class AddMember extends javax.swing.JInternalFrame {
           // Show Data In Inputs
     public void ShowItem(int index)
     {
-                    txt_account.setText(getListMembers().get(index).getaccount());
-                    txt_firstName.setText(getListMembers().get(index).getfirstname());
-                    txt_lastName.setText(getListMembers().get(index).getlastname());
+                    txt_bookID.setText(getListMembers().get(index).getbookid());
+                    txt_bookTitle.setText(getListMembers().get(index).getbooktitle());
+                    txt_barcode.setText(getListMembers().get(index).getbarcode());
                     
-                    // Birthday
                     try {
                     Date addDate = null;
-                    addDate = new SimpleDateFormat("MM-dd-yyyy").parse((String)getListMembers().get(index).getbirthday());
-                    txt_birthday.setDate(addDate);     
+                    addDate = new SimpleDateFormat("MM-dd-yyyy").parse((String)getListMembers().get(index).getbookday());
+                    txt_bookDate.setDate(addDate);     
  
                     } catch (ParseException ex) {
-                            Logger.getLogger(AddMember.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(AddBooks.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    // Gender
-                    //combo_gender.setSelectedItem(getListMembers().get(index).getgender());  
-                    //combo_gender.setSelectedIndex(2);
-                    if ( getListMembers().get(index).getgender().equals("female"))
+                    if ( getListMembers().get(index).getcategory().equals("fiction"))
                             {   
-                                combo_gender.setSelectedItem("female");
+                                combo_category.setSelectedItem("fiction");
                             }
                     else
                     {
-                        combo_gender.setSelectedItem("male");
+                        combo_category.setSelectedItem("non-fiction");
                     }
-                    // String gender = combo_gender.getSelectedItem().toString();
-                            
-                    txt_email.setText(getListMembers().get(index).getemail());
-                    txt_phone.setText(getListMembers().get(index).getphone());
-                    
-                    // Status
-                    combo_status.setSelectedItem(getListMembers().get(index).getstatus());
+ 
+                    combo_bookType.setSelectedItem(getListMembers().get(index).getbooktype());
+                    txt_publisher.setText(getListMembers().get(index).getpublisher());
+                    txt_bookPrice.setText(getListMembers().get(index).getbookprice());
+
     }
         
 
@@ -559,15 +544,15 @@ public class AddMember extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_update;
-    private javax.swing.JComboBox<String> combo_gender;
-    private javax.swing.JComboBox<String> combo_status;
+    private javax.swing.JComboBox<String> combo_bookType;
+    private javax.swing.JComboBox<String> combo_category;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable_Members;
+    private javax.swing.JTable jTable_Books;
     private javax.swing.JLabel lbl_Birthday;
     private javax.swing.JLabel lbl_account;
     private javax.swing.JLabel lbl_control;
@@ -577,13 +562,13 @@ public class AddMember extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_lastName;
     private javax.swing.JLabel lbl_phone;
     private javax.swing.JLabel lbl_status;
-    private javax.swing.JLabel lbl_titleMembers;
-    private javax.swing.JTextField txt_account;
-    private com.toedter.calendar.JDateChooser txt_birthday;
-    private javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_firstName;
-    private javax.swing.JTextField txt_lastName;
-    private javax.swing.JTextField txt_phone;
-    private javax.swing.JTextField txt_searchAccount;
+    private javax.swing.JLabel lbl_titleBooks;
+    private javax.swing.JTextField txt_barcode;
+    private com.toedter.calendar.JDateChooser txt_bookDate;
+    private javax.swing.JTextField txt_bookID;
+    private javax.swing.JTextField txt_bookPrice;
+    private javax.swing.JTextField txt_bookTitle;
+    private javax.swing.JTextField txt_publisher;
+    private javax.swing.JTextField txt_searchBookID;
     // End of variables declaration//GEN-END:variables
 }

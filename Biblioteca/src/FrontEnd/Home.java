@@ -37,12 +37,12 @@ public class Home extends javax.swing.JFrame {
         lbl_LibrarySystem = new javax.swing.JLabel();
         lbl_date = new javax.swing.JLabel();
         lbl_time = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         btn_checkOut = new javax.swing.JButton();
         btn_checkIn = new javax.swing.JButton();
-        btn_addMembers = new javax.swing.JButton();
+        btn_addUsers = new javax.swing.JButton();
         btn_addBooks = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         homeDesktop = new javax.swing.JDesktopPane();
         jLabel3 = new javax.swing.JLabel();
@@ -63,9 +63,6 @@ public class Home extends javax.swing.JFrame {
         lbl_time.setText("Time");
         jPanel1.add(lbl_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 170, -1));
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1200, 620));
-
         jToolBar1.setRollover(true);
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 50));
 
@@ -85,13 +82,13 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel1.add(btn_checkIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
-        btn_addMembers.setText("Add Member");
-        btn_addMembers.addActionListener(new java.awt.event.ActionListener() {
+        btn_addUsers.setText("Add Users");
+        btn_addUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_addMembersActionPerformed(evt);
+                btn_addUsersActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_addMembers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        jPanel1.add(btn_addUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         btn_addBooks.setText("Add Books");
         btn_addBooks.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +97,9 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_addBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+
+        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1200, 620));
 
         jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 180, 570));
@@ -171,16 +171,16 @@ public class Home extends javax.swing.JFrame {
     
     
     
-    private void btn_addMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addMembersActionPerformed
+    private void btn_addUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addUsersActionPerformed
         homeDesktop.removeAll();
         TheMembers.AddMember am = new TheMembers.AddMember();
         homeDesktop.add(am).setVisible(true);
         
-    }//GEN-LAST:event_btn_addMembersActionPerformed
+    }//GEN-LAST:event_btn_addUsersActionPerformed
 
     private void btn_addBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addBooksActionPerformed
         homeDesktop.removeAll();
-        AddBook ab = new AddBook();
+        TheBooks.AddBooks ab = new TheBooks.AddBooks();
         homeDesktop.add(ab).setVisible(true);
         
     }//GEN-LAST:event_btn_addBooksActionPerformed
@@ -237,7 +237,7 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_addBooks;
-    private javax.swing.JButton btn_addMembers;
+    private javax.swing.JButton btn_addUsers;
     private javax.swing.JButton btn_checkIn;
     private javax.swing.JButton btn_checkOut;
     private javax.swing.JDesktopPane homeDesktop;
