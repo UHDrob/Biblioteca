@@ -28,6 +28,7 @@ public class BooksObject
         private String publisherArray;
         private String bookPriceArray;
 
+
 // Define CONSTRUCTOR
         public Book (String bookID, String bTitle, String bCode, String cat, String bType, String pub, String Phone, String bPrice)
         {
@@ -41,6 +42,9 @@ public class BooksObject
             this.bookPriceArray = bPrice;
         }   
 
+
+        
+        
     public String getbookid()
     {
         return bookIdArray;

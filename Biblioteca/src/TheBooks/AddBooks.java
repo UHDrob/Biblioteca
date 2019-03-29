@@ -119,13 +119,15 @@ public class AddBooks extends javax.swing.JInternalFrame {
         }
         
         // Mar 29, 2019 Roberto:  Save ArrayList to File
-        public void save(String fileName) throws FileNotFoundException {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(fileName))) 
+        public void save(String fileName) throws FileNotFoundException 
         {
-         //   for (Book book : books)
-         //       pw.println(book.getName());
+            try (PrintWriter pw = new PrintWriter(new FileOutputStream(fileName))) 
+            {
+                    ArrayList<Book> books = new ArrayList<Book>();
+                  // for (Book bookList : books)
+                  //     pw.println(books.getBook());
+            }
         }
-}
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -394,7 +396,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
             String status = "";
             
             ArrayList<Book> bookArrayList = new ArrayList<Book>();
-            // ArrayList<Items> list = new ArrayList<Items>();
+
             try
             {
                
@@ -418,7 +420,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
             }
             catch(Exception e)
             {
-                //JOptionPane.showMessageDialog(null, "ArrayList Error HERE" + e); // e
+                //JOptionPane.showMessageDialog(null, "Error!" + e); // e
             }
 
             return bookArrayList;
