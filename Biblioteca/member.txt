@@ -1,4 +1,3 @@
 0001, Roberto, Gomez, 10-01-1971, Male, roberto@gator.uhd.edu, 8328006112, active
 0002, Nina, Lalonde, 01-01-1980, Female, nina@gator.uhd.edu, 7121111111, past due
-0003, Alan, Saavedra, 01-01-1985, Male,alan@gator.uhd.edu, 3462222222, cancel0004, Testin, Te, 03-07-2019, female, asdf, 234, active
-
+0003, Alan, Saavedra, 01-01-1985, Male,alan@gator.uhd.edu, 3462222222, cancel

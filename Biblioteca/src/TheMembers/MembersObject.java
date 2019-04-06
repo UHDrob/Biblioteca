@@ -6,6 +6,7 @@
 package TheMembers;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,72 +17,109 @@ public class MembersObject
     String filepath = "member.txt";
     private static Scanner x;
     
-// Define STATE
+
     public static class  Member
     {
-        private String accountArray;
-        private String firstNameArray;
-        private String lastNameArray;
-        private String birthdayArray;
-        private String genderArray;
-        private String emailArray;
-        private String phoneArray;
-        private String statusArray;
+        
+ // April 4, 2019 Roberto: Define STATE       (Data Hiding)      
+        private String account;
+        private String firstName;
+        private String lastName;
+        private String birthday;
+        private String gender;
+        private String email;
+        private String phone;
+        private String status;
 
-// Define CONSTRUCTOR
-        public Member (String Id, String FName, String LName, String DoB, String Gender, String Email, String Phone, String Status)
+// April 4, 2019 Roberto: Define CONSTRUCTOR Member
+        public Member (String Id, String FName, String LName, String DoB, String Gen, String Email, String Phone, String Status)
         {
-            this.accountArray = Id;
-            this.firstNameArray = FName;
-            this.lastNameArray = LName;
-            this.birthdayArray = DoB;
-            this.genderArray = Gender;
-            this.emailArray = Email;
-            this.phoneArray = Phone;
-            this.statusArray = Status;
+            this.account = Id;
+            this.firstName = FName;
+            this.lastName = LName;
+            this.birthday = DoB;
+            this.gender = Gen;
+            this.email = Email;
+            this.phone = Phone;
+            this.status = Status;
         }   
 
-    public String getaccount()
-    {
-        return accountArray;
-    }
-    
-    public String getfirstname()
-    {
-        return firstNameArray;
-    }
-    
-    public String getlastname()
-    {
-        return lastNameArray;
-    }
-    
-    public String getbirthday()
-    {
-        return birthdayArray;
-    }
-    
-    public String getgender()
-    {
-        return genderArray;
-    }
-    
-    public String getemail()
-    {
-        return emailArray;
-    }
-    
-    public String getphone()
-    {
-        return phoneArray;
-    }
-    
-    public String getstatus()
-    {
-        return statusArray;
-    }
-    
-
+        
+// April 4, 2019 Roberto: GET methods
+        public String getaccount()
+        {
+            return account;
+        }  
+        public String getfirstname()
+        {
+            return firstName;
+        }
+        public String getlastname()
+        {
+            return lastName;
+        }
+        public String getbirthday()
+        {
+            return birthday;
+        }
+        public String getgender()
+        {
+            return gender;
+        }
+        public String getemail()
+        {
+            return email;
+        }
+        public String getphone()
+        {
+            return phone;
+        }
+        public String getstatus()
+        {
+            return status;
+        }
+        
+ // April 4, 2019 Roberto: SET Methods
+        public void setaccount(String acct)
+        {
+            account = acct;
+        }
+        public void setfirstname(String fN)
+        {
+                firstName = fN;
+        }
+        public void setlastname(String lN)
+        {
+            lastName = lN;
+        }
+        public void setbirthday(String bd)
+        {
+            birthday = bd;
+        }
+        public void setgender(String gn)
+        {
+            gender = gn;
+        }
+        public void setemail(String em)
+        {
+            email = em;
+        }
+        public void setphone(String ph)
+        {
+            if (ph.length() == 10)
+            {
+                phone = ph;
+            }
+            else
+                JOptionPane.showMessageDialog(null,"Phone Number should be at least 10 digits");
+            
+        }
+        public void setstatus(String st)
+        {
+            status = st;
+        }
+        
+    // Define BEHAVIOR
 
 
     }

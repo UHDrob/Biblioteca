@@ -156,9 +156,9 @@ public class AddBooks extends javax.swing.JInternalFrame {
         txt_barcode = new javax.swing.JTextField();
         txt_bookDate = new com.toedter.calendar.JDateChooser();
         combo_category = new javax.swing.JComboBox<>();
-        txt_bookPrice = new javax.swing.JTextField();
+        combo_booktype = new javax.swing.JComboBox<>();
         txt_publisher = new javax.swing.JTextField();
-        combo_bookType = new javax.swing.JComboBox<>();
+        txt_bookPrice = new javax.swing.JTextField();
         btn_clear = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
@@ -232,11 +232,11 @@ public class AddBooks extends javax.swing.JInternalFrame {
 
         combo_category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category", "fiction", "non-fiction" }));
         jPanel1.add(combo_category, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 150, 30));
-        jPanel1.add(txt_bookPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 160, 30));
-        jPanel1.add(txt_publisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 160, 30));
 
-        combo_bookType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "book", "video", "audio" }));
-        jPanel1.add(combo_bookType, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 150, 30));
+        combo_booktype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "book", "video", "audio" }));
+        jPanel1.add(combo_booktype, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 150, 30));
+        jPanel1.add(txt_publisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 160, 30));
+        jPanel1.add(txt_bookPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 160, 30));
 
         btn_clear.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_clear.setText("CLEAR");
@@ -328,7 +328,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
 
             String email = txt_bookPrice.getText();
             String phone = txt_publisher.getText();
-            String status = combo_bookType.getSelectedItem().toString();
+            String status = combo_booktype.getSelectedItem().toString();
              
             saveRecord(account, firstname, lastname, birthday, gender, email, phone, status, filepath);
             
@@ -384,16 +384,16 @@ public class AddBooks extends javax.swing.JInternalFrame {
     
     
     // Define BEHAVIOR
-        public ArrayList<Book> getListMembers()
+        public ArrayList<Book> getListBooks()
         {
-            String acct = ""; 
-            String firstName = ""; 
-            String lastName = "";
-            String birthday = "";
-            String gender = "";
-            String email = "";
-            String phone = "";
-            String status = "";
+            String bookID = ""; 
+            String bookTitle = ""; 
+            String barcode = "";
+            String bookDate = "";
+            String category = "";
+            String bookType = "";
+            String publisher = "";
+            String bookPrice = "";
             
             ArrayList<Book> bookArrayList = new ArrayList<Book>();
 
@@ -405,16 +405,16 @@ public class AddBooks extends javax.swing.JInternalFrame {
 
                 while (  x.hasNext() )
                 {
-                    acct = x.next();
-                    firstName = x.next();
-                    lastName = x.next();
-                    birthday = x.next();                
-                    gender = x.next();
-                    email = x.next();
-                    phone = x.next();
-                    status = x.next();
+                    bookID = x.next();
+                    bookTitle = x.next();
+                    barcode = x.next();
+                    bookDate = x.next();                
+                    category = x.next();
+                    bookType = x.next();
+                    publisher = x.next();
+                    bookPrice = x.next();
                                   
-                    Book line = new Book(acct, firstName, lastName, birthday, gender, email, phone, status);
+                    Book line = new Book(bookID, bookTitle, barcode, bookDate, category, bookType, publisher, bookPrice);
                     bookArrayList.add(line);
                 }
             }
@@ -432,9 +432,9 @@ public class AddBooks extends javax.swing.JInternalFrame {
     {
         DefaultTableModel model = (DefaultTableModel) jTable_Books.getModel();
         model.setRowCount(0);
-        //DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
-        ArrayList<Book> list = getListMembers();
-        
+     
+        ArrayList<Book> list = getListBooks();
+       
         Object rowData[] = new Object[8];
         for(int i=0; i < list.size(); i++)
         {
@@ -453,18 +453,18 @@ public class AddBooks extends javax.swing.JInternalFrame {
     
   
       // Mar 23, 2019 Roberto : ReadFileMembers set filename and confirm for debugging
-        public void ReadFileMembers(String fileName)
+        public void ReadFileBooks(String fileName)
         {
 
             boolean found = false;
-            String memberID = ""; 
-            String firstName = ""; 
-            String lastName = "";
-            String dob ="";
-            String gender = "";
-            String email = "";
-            String phoneNumber = "";
-            String status = "";
+            String bookID = ""; 
+            String bookTitle = ""; 
+            String barcode = "";
+            String bookDate ="";
+            String category = "";
+            String bookType = "";
+            String publisher = "";
+            String bookPrice = "";
             
             try
             {
@@ -472,14 +472,15 @@ public class AddBooks extends javax.swing.JInternalFrame {
                 x.useDelimiter("[,\n]");
                 while(x.hasNext() )
                 {
-                    memberID = x.next();
-                    firstName = x.next();
-                    lastName = x.next();
-                    dob = x.next();
-                    gender = x.next();
-                    email = x.next();
-                    phoneNumber = x.next();
-                    status = x.next();
+                    bookID = x.next();
+                    bookTitle = x.next();
+                    barcode = x.next();
+                    bookDate = x.next();
+                    category = x.next();
+                    bookType = x.next();
+                    publisher = x.next();
+                    JOptionPane.showMessageDialog(null, publisher);
+                    bookPrice = x.next();
 
                 }
             }
@@ -511,31 +512,53 @@ public class AddBooks extends javax.swing.JInternalFrame {
           // Show Data In Inputs
     public void ShowItem(int index)
     {
-                    txt_bookID.setText(getListMembers().get(index).getbookid());
-                    txt_bookTitle.setText(getListMembers().get(index).getbooktitle());
-                    txt_barcode.setText(getListMembers().get(index).getbarcode());
+                    txt_bookID.setText(getListBooks().get(index).getbookid());
+                    txt_bookTitle.setText(getListBooks().get(index).getbooktitle());
+                    txt_barcode.setText(getListBooks().get(index).getbarcode());
                     
-                    try {
-                    Date addDate = null;
-                    addDate = new SimpleDateFormat("MM-dd-yyyy").parse((String)getListMembers().get(index).getbookday());
-                    txt_bookDate.setDate(addDate);     
- 
-                    } catch (ParseException ex) {
-                            Logger.getLogger(AddBooks.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    try 
+                    {
+                        Date addDate = null;
+                        addDate = new SimpleDateFormat("MM-dd-yyyy").parse((String)getListBooks().get(index).getbookday());
+                        txt_bookDate.setDate(addDate);     
+                    } catch (ParseException ex) 
+                            {
+                                Logger.getLogger(AddBooks.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                     
-                    if ( getListMembers().get(index).getcategory().equals("fiction"))
+                    if ( getListBooks().get(index).getcategory().equals("fiction"))
                             {   
                                 combo_category.setSelectedItem("fiction");
                             }
                     else
-                    {
-                        combo_category.setSelectedItem("non-fiction");
-                    }
+                        {
+                            combo_category.setSelectedItem("non-fiction");
+                        }
  
-                    combo_bookType.setSelectedItem(getListMembers().get(index).getbooktype());
-                    txt_publisher.setText(getListMembers().get(index).getpublisher());
-                    txt_bookPrice.setText(getListMembers().get(index).getbookprice());
+                    
+                    if ( getListBooks().get(index).getbooktype().equals("video"))
+                            {   
+                                combo_category.setSelectedItem("video");
+                            }
+                    else
+                        {
+                            combo_category.setSelectedItem("book");
+                        }
+             //       switch (getListBooks().get(index).getbooktype()) 
+             //       {
+             //           case "book":
+             //               combo_bookType.setSelectedItem("book");
+             //               break;
+             //           case "dvd":
+             //               combo_bookType.setSelectedItem("dvd");
+             //               break;
+             //           default:
+             //               combo_bookType.setSelectedItem("audio");
+             //               break;
+             //       }
+                    
+                    txt_publisher.setText(getListBooks().get(index).getpublisher());
+                    txt_bookPrice.setText(getListBooks().get(index).getbookprice());
 
     }
         
@@ -546,7 +569,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_update;
-    private javax.swing.JComboBox<String> combo_bookType;
+    private javax.swing.JComboBox<String> combo_booktype;
     private javax.swing.JComboBox<String> combo_category;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

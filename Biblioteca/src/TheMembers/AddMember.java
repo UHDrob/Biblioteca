@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * Created Mar 23 2019
- * Modified Mar 26 2019
+ * Modified April 4, 2019
  * @author Roberto Gomez
  * @version 2
  */
@@ -43,6 +44,8 @@ public class AddMember extends javax.swing.JInternalFrame {
     // Feb 20 2019 Roberto: This is the file that has all the data for this package
     String filepath = "member.txt";
     private static Scanner x;
+    ArrayList<Member> updateList = getListMembers();
+    
     
    // Feb 19, 2019 Roberto: This section search for a Record in the file by Employee ID
         public static void searchRecord (String searchterm, String filepath) throws FileNotFoundException
@@ -126,8 +129,8 @@ public class AddMember extends javax.swing.JInternalFrame {
         public void save(String fileName) throws FileNotFoundException {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(fileName))) 
         {
-         //   for (Club club : clubs)
-         //       pw.println(club.getName());
+         //   
+         //      
         }
 }
         
@@ -142,6 +145,7 @@ public class AddMember extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbl_titleMembers = new javax.swing.JLabel();
+        lbl_accountLookup = new javax.swing.JLabel();
         txt_searchAccount = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -179,7 +183,11 @@ public class AddMember extends javax.swing.JInternalFrame {
         lbl_titleMembers.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         lbl_titleMembers.setText("Users");
         jPanel1.add(lbl_titleMembers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
-        jPanel1.add(txt_searchAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 9, 240, 30));
+
+        lbl_accountLookup.setFont(new java.awt.Font("Dialog", 3, 11)); // NOI18N
+        lbl_accountLookup.setText("Account Lookup:");
+        jPanel1.add(lbl_accountLookup, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 15, 110, 20));
+        jPanel1.add(txt_searchAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 9, 120, 30));
 
         btn_search.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_search.setText("SEARCH");
@@ -260,6 +268,11 @@ public class AddMember extends javax.swing.JInternalFrame {
 
         btn_update.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_update.setText("UPDATE");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 150, 40));
 
         btn_delete.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
@@ -377,13 +390,60 @@ public class AddMember extends javax.swing.JInternalFrame {
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         if(!txt_account.getText().equals(""))
         {
+            // Feb 4 2019 Roberto: Delete from Table
             int index = jTable_Members.getSelectedRow();
            ((DefaultTableModel)jTable_Members.getModel()).removeRow(index); 
+           
+            // Feb 4 2019 Roberto: Delete from Array
+            updateList.remove(index);
+            clearAll();
             JOptionPane.showMessageDialog(null,"Record has been DELETED!");
+            try {
+                WriteFileMembers(filepath);
+            } catch (IOException ex) {
+                Logger.getLogger(AddMember.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
         JOptionPane.showMessageDialog(null,"Student Not Deleted: No Student ID to Delete");
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        if(!txt_account.getText().equals(""))
+        {
+            // Feb 4 2019 Roberto: Update to Table
+            int index = jTable_Members.getSelectedRow();
+           ((DefaultTableModel)jTable_Members.getModel()).removeRow(index); 
+           
+            // Feb 4 2019 Roberto: Update to Array
+            String account = txt_account.getText();
+            String firstname = txt_firstName.getText();
+            String lastname = txt_lastName.getText();
+            
+            
+            // String birthday = txt_birthday.getText();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy"); //  yyyy-MM-dd
+            String addDate = dateFormat.format(txt_birthday.getDate());
+            String birthday = addDate;
+            
+            String gender = combo_gender.getSelectedItem().toString();
+            //String gender = combo_gender.toString();
+            String email = txt_email.getText();
+            String phone = txt_phone.getText();
+            String status = combo_status.getSelectedItem().toString();
+             
+            
+            
+            JOptionPane.showMessageDialog(null,"Record has been UPDATED!");
+            try {
+                WriteFileMembers(filepath);
+            } catch (IOException ex) {
+                Logger.getLogger(AddMember.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+        JOptionPane.showMessageDialog(null,"Student Not Updated: No Student ID to Update");
+        }
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     
     
@@ -497,6 +557,23 @@ public class AddMember extends javax.swing.JInternalFrame {
 
         }      
         
+         // April 4, 2019 Roberto : WriteFileMembers backt to members.txt
+        public void WriteFileMembers( String fileName) throws IOException
+                // Write Arraylist X back to members.txt
+        {
+            // ArrayList<Member> updateList = getListMembers();
+            FileWriter writer = new FileWriter("member.txt"); 
+            for(Member str: updateList)
+            {
+                writer.write(str.getaccount() +"," + str.getfirstname() + "," + str.getlastname() + "," + str.getbirthday()+"," + str.getgender() 
+                        + "," + str.getemail() + "," + str.getphone() + "," + str.getstatus() + "\n");
+            }
+            writer.close();
+
+        }        
+        
+        
+        
    // Feb 19 2019 Roberto: Check Input Fields to verify they are not empty
         public boolean checkInputs()
         {
@@ -551,7 +628,15 @@ public class AddMember extends javax.swing.JInternalFrame {
                     // Status
                     combo_status.setSelectedItem(getListMembers().get(index).getstatus());
     }
-        
+    
+    public void clearAll()
+    {
+        txt_account.setText(null);
+        txt_firstName.setText(null);
+        txt_lastName.setText(null);
+        txt_email.setText(null);
+        txt_phone.setText(null); 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
@@ -570,6 +655,7 @@ public class AddMember extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable_Members;
     private javax.swing.JLabel lbl_Birthday;
     private javax.swing.JLabel lbl_account;
+    private javax.swing.JLabel lbl_accountLookup;
     private javax.swing.JLabel lbl_control;
     private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_firstName;

@@ -41,9 +41,6 @@ public class BooksObject
             this.publisherArray = pub;
             this.bookPriceArray = bPrice;
         }   
-
-
-        
         
     public String getbookid()
     {

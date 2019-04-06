@@ -7,7 +7,8 @@ package biblioteca;
 
 /**
  *
- * @author Rob77
+ * @author Roberto Gomez
+ * @version 2
  */
 public class Biblioteca {
 
