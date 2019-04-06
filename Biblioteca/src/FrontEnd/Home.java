@@ -5,6 +5,7 @@
  */
 package FrontEnd;
 
+import TheCheckOut.CheckOut;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
@@ -187,7 +188,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_checkOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkOutActionPerformed
         homeDesktop.removeAll();
-        CheckOut co = new CheckOut();
+        TheCheckOut.CheckOut co = new TheCheckOut.CheckOut();
         homeDesktop.add(co).setVisible(true);
         
     }//GEN-LAST:event_btn_checkOutActionPerformed

@@ -20,7 +20,7 @@ public class Biblioteca {
     public static void main(String[] args) {
         Login log = new Login();
             log.setVisible(true);
-          //  this.dispose();
+          
     }
     
 }
