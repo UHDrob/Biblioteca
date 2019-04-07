@@ -70,9 +70,10 @@ public class Home extends javax.swing.JFrame {
 
         lbl_LibrarySystem.setBackground(java.awt.Color.red);
         lbl_LibrarySystem.setFont(new java.awt.Font("Serif", 3, 30)); // NOI18N
-        lbl_LibrarySystem.setForeground(java.awt.Color.blue);
+        lbl_LibrarySystem.setForeground(java.awt.Color.white);
         lbl_LibrarySystem.setText("UNIVERSITY OF HOUSTON - DOWNTOWN          Library");
-        jPanel1.add(lbl_LibrarySystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        lbl_LibrarySystem.setOpaque(true);
+        jPanel1.add(lbl_LibrarySystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 790, -1));
 
         lbl_title.setBackground(java.awt.Color.red);
         lbl_title.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,7 +205,7 @@ public class Home extends javax.swing.JFrame {
                 btn_addUsersActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_addUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 250, 160, -1));
+        jPanel1.add(btn_addUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 160, -1));
 
         btn_addBooks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/books.jpg"))); // NOI18N
         btn_addBooks.setText("Add Book");
@@ -213,7 +214,7 @@ public class Home extends javax.swing.JFrame {
                 btn_addBooksActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_addBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 340, 160, 60));
+        jPanel1.add(btn_addBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 160, 50));
 
         btn_addStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/Staff.jpg"))); // NOI18N
         btn_addStaff.setText("Add Staff");
@@ -223,7 +224,7 @@ public class Home extends javax.swing.JFrame {
                 btn_addStaffActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_addStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 160, -1));
+        jPanel1.add(btn_addStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 160, -1));
 
         lblUHDbackground.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUHDbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/uh_downtown.jpg"))); // NOI18N
@@ -347,7 +348,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_tool2ActionPerformed
 
     private void btn_developersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_developersActionPerformed
-        // TODO add your handling code here:
+        homeDesktop.removeAll();
+        TheTeam.Developers dev = new TheTeam.Developers();
+        homeDesktop.add(dev).setVisible(true);
     }//GEN-LAST:event_btn_developersActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
