@@ -41,6 +41,10 @@ public class Home extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btn_inventory = new javax.swing.JButton();
         btn_allusers = new javax.swing.JButton();
+        btn_tool1 = new javax.swing.JButton();
+        btn_tool2 = new javax.swing.JButton();
+        btn_developers = new javax.swing.JButton();
+        btn_exit = new javax.swing.JButton();
         btn_checkOut = new javax.swing.JButton();
         btn_checkIn = new javax.swing.JButton();
         btn_addUsers = new javax.swing.JButton();
@@ -96,6 +100,70 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btn_allusers);
+
+        btn_tool1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        btn_tool1.setForeground(java.awt.Color.blue);
+        btn_tool1.setText("Tool 1");
+        btn_tool1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_tool1.setFocusable(false);
+        btn_tool1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_tool1.setMaximumSize(new java.awt.Dimension(140, 29));
+        btn_tool1.setPreferredSize(new java.awt.Dimension(140, 29));
+        btn_tool1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_tool1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tool1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_tool1);
+
+        btn_tool2.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        btn_tool2.setForeground(java.awt.Color.blue);
+        btn_tool2.setText("Tool 2");
+        btn_tool2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_tool2.setFocusable(false);
+        btn_tool2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_tool2.setMaximumSize(new java.awt.Dimension(140, 29));
+        btn_tool2.setPreferredSize(new java.awt.Dimension(140, 29));
+        btn_tool2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_tool2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tool2ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_tool2);
+
+        btn_developers.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        btn_developers.setForeground(java.awt.Color.blue);
+        btn_developers.setText("Developers");
+        btn_developers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_developers.setFocusable(false);
+        btn_developers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_developers.setMaximumSize(new java.awt.Dimension(140, 29));
+        btn_developers.setPreferredSize(new java.awt.Dimension(140, 29));
+        btn_developers.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_developers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_developersActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_developers);
+
+        btn_exit.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        btn_exit.setForeground(java.awt.Color.blue);
+        btn_exit.setText("Exit");
+        btn_exit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_exit.setFocusable(false);
+        btn_exit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_exit.setMaximumSize(new java.awt.Dimension(140, 29));
+        btn_exit.setPreferredSize(new java.awt.Dimension(140, 29));
+        btn_exit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_exit);
 
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 50));
 
@@ -253,6 +321,22 @@ public class Home extends javax.swing.JFrame {
         homeDesktop.add(au).setVisible(true);
     }//GEN-LAST:event_btn_allusersActionPerformed
 
+    private void btn_tool1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tool1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_tool1ActionPerformed
+
+    private void btn_tool2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tool2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_tool2ActionPerformed
+
+    private void btn_developersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_developersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_developersActionPerformed
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_exitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -295,7 +379,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton btn_allusers;
     private javax.swing.JButton btn_checkIn;
     private javax.swing.JButton btn_checkOut;
+    private javax.swing.JButton btn_developers;
+    private javax.swing.JButton btn_exit;
     private javax.swing.JButton btn_inventory;
+    private javax.swing.JButton btn_tool1;
+    private javax.swing.JButton btn_tool2;
     private javax.swing.JDesktopPane homeDesktop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

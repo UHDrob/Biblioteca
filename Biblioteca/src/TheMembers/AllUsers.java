@@ -7,6 +7,7 @@ package TheMembers;
 
 
 import TheMembers.MembersObject.Member;
+import java.awt.print.PrinterException;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,11 +15,13 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -145,6 +148,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
         lbl_accountLookup = new javax.swing.JLabel();
         txt_searchAccount = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
+        btn_print = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_Members = new javax.swing.JTable();
@@ -173,6 +177,15 @@ public class AllUsers extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 150, 40));
 
+        btn_print.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btn_print.setText("Print");
+        btn_print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_printActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, -1, -1));
+
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
 
@@ -191,7 +204,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jTable_Members);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 72, 930, 450));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 102, 930, 370));
 
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 980, 480));
@@ -229,6 +242,17 @@ public class AllUsers extends javax.swing.JInternalFrame {
         int index = jTable_Members.getSelectedRow();
      
     }//GEN-LAST:event_jTable_MembersMouseClicked
+
+    private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
+        MessageFormat header = new MessageFormat("University of Houston - Downtown     LIBRARY");
+        MessageFormat footer = new MessageFormat(" Users Report");
+        try{
+            jTable_Members.print(JTable.PrintMode.FIT_WIDTH, header,footer);
+        }
+        catch(PrinterException e){
+            JOptionPane.showMessageDialog(null, "Cannot Print");
+        }
+    }//GEN-LAST:event_btn_printActionPerformed
 
     
     
@@ -361,6 +385,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_print;
     private javax.swing.JButton btn_search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

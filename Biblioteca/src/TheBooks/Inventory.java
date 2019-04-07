@@ -7,12 +7,14 @@ package TheBooks;
 
 
 import TheBooks.BooksObject.Book;
+import java.awt.print.PrinterException;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -143,6 +146,7 @@ public class Inventory extends javax.swing.JInternalFrame {
         lbl_titleBooks = new javax.swing.JLabel();
         txt_searchBookTitle = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
+        btn_print = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panel_table = new javax.swing.JScrollPane();
         jTable_Books = new javax.swing.JTable();
@@ -170,6 +174,15 @@ public class Inventory extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 150, 40));
 
+        btn_print.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        btn_print.setText("Print");
+        btn_print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_printActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 490, -1, -1));
+
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
 
@@ -188,7 +201,7 @@ public class Inventory extends javax.swing.JInternalFrame {
         });
         panel_table.setViewportView(jTable_Books);
 
-        jPanel1.add(panel_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 72, 930, 450));
+        jPanel1.add(panel_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 102, 930, 380));
 
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 530));
@@ -226,6 +239,17 @@ public class Inventory extends javax.swing.JInternalFrame {
         int index = jTable_Books.getSelectedRow();
        
     }//GEN-LAST:event_jTable_BooksMouseClicked
+
+    private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
+        MessageFormat header = new MessageFormat("University of Houston - Downtown     LIBRARY");
+        MessageFormat footer = new MessageFormat(" Inventory Report");
+        try{
+            jTable_Books.print(JTable.PrintMode.FIT_WIDTH, header,footer);
+        }
+        catch(PrinterException e){
+            JOptionPane.showMessageDialog(null, "Cannot Print");
+        }
+    }//GEN-LAST:event_btn_printActionPerformed
 
     
     
@@ -343,6 +367,7 @@ public class Inventory extends javax.swing.JInternalFrame {
         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_print;
     private javax.swing.JButton btn_search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
