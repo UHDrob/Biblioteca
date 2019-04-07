@@ -28,6 +28,13 @@ public class CheckOut extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        panel_controls = new javax.swing.JPanel();
+        btn_clear = new javax.swing.JButton();
+        btn_checkout = new javax.swing.JButton();
+        txt_transaction = new javax.swing.JLabel();
+        lbl_transactionid = new javax.swing.JLabel();
         panel_books = new javax.swing.JPanel();
         txt_bookid = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -35,27 +42,89 @@ public class CheckOut extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         txt_booktitle = new javax.swing.JTextField();
         txt_booktype = new javax.swing.JTextField();
-        panel_members = new javax.swing.JPanel();
-        lbl_account = new javax.swing.JLabel();
-        lbl_firstname = new javax.swing.JLabel();
-        lbl_lastname = new javax.swing.JLabel();
-        lbl_status = new javax.swing.JLabel();
-        txt_account = new javax.swing.JTextField();
-        txt_firstname = new javax.swing.JTextField();
-        txt_lastname = new javax.swing.JTextField();
-        txt_status = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        panel_controls = new javax.swing.JPanel();
-        btn_clear = new javax.swing.JButton();
-        btn_checkout = new javax.swing.JButton();
         panel_dates = new javax.swing.JPanel();
         lbl_issuedate = new javax.swing.JLabel();
         txt_issuedate = new javax.swing.JTextField();
         lbl_returndate = new javax.swing.JLabel();
         txt_returndate = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        lbl_account = new javax.swing.JLabel();
+        lbl_firstname = new javax.swing.JLabel();
+        lbl_lastname = new javax.swing.JLabel();
+        lbl_status = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        txt_firstname = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        jLabel4.setText("Check Out");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(828, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 60));
+
+        panel_controls.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        btn_clear.setText("CLEAR");
+
+        btn_checkout.setText("CHECK OUT");
+
+        txt_transaction.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        txt_transaction.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+
+        lbl_transactionid.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        lbl_transactionid.setText("Transacction ID");
+
+        javax.swing.GroupLayout panel_controlsLayout = new javax.swing.GroupLayout(panel_controls);
+        panel_controls.setLayout(panel_controlsLayout);
+        panel_controlsLayout.setHorizontalGroup(
+            panel_controlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_controlsLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(panel_controlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_transactionid)
+                    .addComponent(txt_transaction, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_checkout)
+                    .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        panel_controlsLayout.setVerticalGroup(
+            panel_controlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_controlsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_transactionid)
+                .addGap(25, 25, 25)
+                .addComponent(txt_transaction, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(btn_clear)
+                .addGap(42, 42, 42)
+                .addComponent(btn_checkout)
+                .addGap(65, 65, 65))
+        );
+
+        jPanel1.add(panel_controls, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, 160, 300));
 
         panel_books.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
@@ -106,114 +175,10 @@ public class CheckOut extends javax.swing.JInternalFrame {
                 .addGroup(panel_booksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txt_booktype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panel_books, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 480, -1));
-
-        panel_members.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
-        lbl_account.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_account.setText("Account");
-
-        lbl_firstname.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_firstname.setText("First Name");
-
-        lbl_lastname.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_lastname.setText("Last Name");
-
-        lbl_status.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_status.setText("Status");
-
-        javax.swing.GroupLayout panel_membersLayout = new javax.swing.GroupLayout(panel_members);
-        panel_members.setLayout(panel_membersLayout);
-        panel_membersLayout.setHorizontalGroup(
-            panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_membersLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_account)
-                    .addComponent(lbl_firstname)
-                    .addComponent(lbl_lastname)
-                    .addComponent(lbl_status))
-                .addGap(74, 74, 74)
-                .addGroup(panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_account, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                        .addComponent(txt_status))
-                    .addComponent(txt_firstname, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_lastname))
-                .addGap(26, 26, 26))
-        );
-        panel_membersLayout.setVerticalGroup(
-            panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_membersLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_account)
-                    .addComponent(txt_account, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_firstname)
-                    .addComponent(txt_firstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_lastname)
-                    .addComponent(txt_lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(panel_membersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_status)
-                    .addComponent(txt_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(panel_members, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 312, 980, 170));
-
-        panel_controls.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-
-        btn_clear.setText("CLEAR");
-
-        btn_checkout.setText("CHECK OUT");
-
-        javax.swing.GroupLayout panel_controlsLayout = new javax.swing.GroupLayout(panel_controls);
-        panel_controls.setLayout(panel_controlsLayout);
-        panel_controlsLayout.setHorizontalGroup(
-            panel_controlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_controlsLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(btn_checkout)
-                .addGap(33, 33, 33))
-            .addGroup(panel_controlsLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panel_controlsLayout.setVerticalGroup(
-            panel_controlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_controlsLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(btn_clear)
-                .addGap(26, 26, 26)
-                .addComponent(btn_checkout)
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(panel_controls, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 160, 300));
+        jPanel1.add(panel_books, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, 220));
 
         panel_dates.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
@@ -250,7 +215,79 @@ public class CheckOut extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21))
         );
 
-        jPanel1.add(panel_dates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 810, -1));
+        jPanel1.add(panel_dates, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 810, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 980, 140));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        lbl_account.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        lbl_account.setText("Account");
+
+        lbl_firstname.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        lbl_firstname.setText("First Name");
+
+        lbl_lastname.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        lbl_lastname.setText("Last Name");
+
+        lbl_status.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        lbl_status.setText("Status");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_account)
+                    .addComponent(lbl_firstname)
+                    .addComponent(lbl_lastname)
+                    .addComponent(lbl_status))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField1)
+                    .addComponent(txt_firstname)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(jTextField3))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_account)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_firstname)
+                    .addComponent(txt_firstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_lastname)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_status))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 330, 220));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -258,11 +295,11 @@ public class CheckOut extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 991, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
         );
 
         pack();
@@ -275,27 +312,31 @@ public class CheckOut extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lbl_account;
     private javax.swing.JLabel lbl_firstname;
     private javax.swing.JLabel lbl_issuedate;
     private javax.swing.JLabel lbl_lastname;
     private javax.swing.JLabel lbl_returndate;
     private javax.swing.JLabel lbl_status;
+    private javax.swing.JLabel lbl_transactionid;
     private javax.swing.JPanel panel_books;
     private javax.swing.JPanel panel_controls;
     private javax.swing.JPanel panel_dates;
-    private javax.swing.JPanel panel_members;
-    private javax.swing.JTextField txt_account;
     private javax.swing.JTextField txt_bookid;
     private javax.swing.JTextField txt_booktitle;
     private javax.swing.JTextField txt_booktype;
     private javax.swing.JTextField txt_firstname;
     private javax.swing.JTextField txt_issuedate;
-    private javax.swing.JTextField txt_lastname;
     private javax.swing.JTextField txt_returndate;
-    private javax.swing.JTextField txt_status;
+    private javax.swing.JLabel txt_transaction;
     // End of variables declaration//GEN-END:variables
 }

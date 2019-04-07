@@ -5,6 +5,7 @@
  */
 package FrontEnd;
 
+import TheCheckIn.CheckIn;
 import TheCheckOut.CheckOut;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -195,7 +196,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btn_checkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkInActionPerformed
         homeDesktop.removeAll();
-        CheckIn ci = new CheckIn();
+        TheCheckIn.CheckIn ci = new TheCheckIn.CheckIn();
         homeDesktop.add(ci).setVisible(true);
         
     }//GEN-LAST:event_btn_checkInActionPerformed
