@@ -1,4 +1,4 @@
-9001, Roberto, Gomez, 10-01-1971, Male, rgomez, 7777, roberto@gator.uhd.edu, 8328006112, active
-9002, Nina, Lalonde, 01-01-1980, Female, nlalonde, 1111, nina@gator.uhd.edu, 7121111111, active
-9003, Alan, Saavedra, 01-01-1985, Male, asaavedra, 5555, alan@gator.uhd.edu, 3462222222, inactive
+9001,Roberto,Gomez,10-01-1971,Male,rgomez,7777,roberto@gator.uhd.edu,8328006112,active
+9002,Nina,Lalonde,01-01-1980,Female,nlalonde,1111,nina@gator.uhd.edu,7121111111,active
+9003,Alan,Saavedra,01-01-1985,Male,asaavedra,5555,alan@gator.uhd.edu,3462222222,inactive
 

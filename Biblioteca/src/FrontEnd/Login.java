@@ -5,6 +5,11 @@
  */
 package FrontEnd;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,21 +59,23 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Password");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
-        btn_login.setText("Login");
+        btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/login.jpg"))); // NOI18N
+        btn_login.setBorderPainted(false);
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+        jPanel1.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
 
-        btn_cancel.setText("Cancel");
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/cancel.jpg"))); // NOI18N
+        btn_cancel.setBorderPainted(false);
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
         jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 170, 30));
         jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 170, 30));
 
@@ -87,9 +94,88 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+       // Feb 19, 2019 Roberto: This section search for a Record in the file by Employee ID
+        public static void searchCredentials (String toFound, String filepath) throws FileNotFoundException
+        {
+            Scanner x;
+            boolean found = false;
+            String employeeID = "";
+            String firstName = "";
+            String lastName = "";
+            String birthday;
+            String gender;
+            
+            String username;
+            String password;
+            String email;
+            String phone;
+            String status;
+            
+            try
+            {
+                x = new Scanner(new File(filepath));
+                x.useDelimiter("[,\n]");
+                
+                while(x.hasNext() && !found )
+                {
+                    employeeID = x.next();
+                    firstName = x.next();
+                    lastName = x.next();
+                    birthday = x.next();                
+                    gender = x.next();
+                    username = x.next();
+                    password = x.next();
+                    email = x.next();
+                    phone = x.next();
+                    status = x.next();
+                    
+                    String code =username+password;
+                    if ( toFound.equals(code))
+                    {
+                        found = true;
+                
+                    }
+                }
+                if (found)
+                {
+                Home ho = new Home();
+                ho.setVisible(true);
+                //this.dispose();
+                            
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"record NOT found");
+                }
+                
+            }
+            catch (Exception e)
+            {
+                JOptionPane.showMessageDialog(null, "Error on SearchCredentials : " + e);
+            }
+                    
+        }
+    
+    
+    
+    
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        
         String username = txt_username.getText();
         String password = txt_password.getText();
+        String filePath = "staff.txt";
+        
+                // Feb 19, 2019 Roberto: This section will search by Username and Password
+        String toFound = username + password;
+        try {
+            searchCredentials(toFound, filePath);
+          
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "SEARCH ERROR");
+        }
+        
+        /*
         if (username.equals("admin") && password.equals("12345"))
         {
             Home ho = new Home();
@@ -100,6 +186,7 @@ public class Login extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(rootPane, "username or password incorrect");
         }
+        */
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
