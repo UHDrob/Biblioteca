@@ -39,19 +39,6 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lbl_date">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="24" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Date"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="760" y="60" width="170" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JLabel" name="lbl_time">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -61,7 +48,59 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="970" y="60" width="170" height="-1"/>
+              <AbsoluteConstraints x="1030" y="60" width="150" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_date">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Date"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="860" y="60" width="140" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_LibrarySystem">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Serif" size="30" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="0" id="blue" palette="1" red="0" type="palette"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="UNIVERSITY OF HOUSTON - DOWNTOWN          Library"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="50" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_title">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder thickness="2"/>
+              </Border>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="50" width="1190" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -311,6 +350,23 @@
             </Constraint>
           </Constraints>
         </Component>
+        <Component class="javax.swing.JButton" name="btn_addStaff">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Graphics/Staff.jpg"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Add Staff"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_addStaffActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="440" width="160" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
         <Component class="javax.swing.JLabel" name="lblUHDbackground">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
@@ -363,45 +419,6 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JLabel" name="lbl_title">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="2"/>
-              </Border>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="50" width="1190" height="50"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_LibrarySystem">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="24" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="UNIVERSITY OF HOUSTON - DOWNTOWN          Library"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="40" y="60" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

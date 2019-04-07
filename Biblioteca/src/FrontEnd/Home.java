@@ -36,8 +36,10 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbl_date = new javax.swing.JLabel();
         lbl_time = new javax.swing.JLabel();
+        lbl_date = new javax.swing.JLabel();
+        lbl_LibrarySystem = new javax.swing.JLabel();
+        lbl_title = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         btn_inventory = new javax.swing.JButton();
         btn_allusers = new javax.swing.JButton();
@@ -49,23 +51,33 @@ public class Home extends javax.swing.JFrame {
         btn_checkIn = new javax.swing.JButton();
         btn_addUsers = new javax.swing.JButton();
         btn_addBooks = new javax.swing.JButton();
+        btn_addStaff = new javax.swing.JButton();
         lblUHDbackground = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         homeDesktop = new javax.swing.JDesktopPane();
-        lbl_title = new javax.swing.JLabel();
-        lbl_LibrarySystem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_date.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        lbl_date.setText("Date");
-        jPanel1.add(lbl_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 170, -1));
-
         lbl_time.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lbl_time.setText("Time");
-        jPanel1.add(lbl_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 170, -1));
+        jPanel1.add(lbl_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 60, 150, -1));
+
+        lbl_date.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lbl_date.setText("Date");
+        jPanel1.add(lbl_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, 140, -1));
+
+        lbl_LibrarySystem.setBackground(java.awt.Color.red);
+        lbl_LibrarySystem.setFont(new java.awt.Font("Serif", 3, 30)); // NOI18N
+        lbl_LibrarySystem.setForeground(java.awt.Color.blue);
+        lbl_LibrarySystem.setText("UNIVERSITY OF HOUSTON - DOWNTOWN          Library");
+        jPanel1.add(lbl_LibrarySystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        lbl_title.setBackground(java.awt.Color.red);
+        lbl_title.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1190, 50));
 
         jToolBar1.setRollover(true);
 
@@ -203,6 +215,16 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel1.add(btn_addBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 340, 160, 60));
 
+        btn_addStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/Staff.jpg"))); // NOI18N
+        btn_addStaff.setText("Add Staff");
+        btn_addStaff.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_addStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addStaffActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_addStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 160, -1));
+
         lblUHDbackground.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUHDbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/uh_downtown.jpg"))); // NOI18N
         lblUHDbackground.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -223,17 +245,6 @@ public class Home extends javax.swing.JFrame {
         );
 
         jPanel1.add(homeDesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 1010, 570));
-
-        lbl_title.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_title.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel1.add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1190, 50));
-
-        lbl_LibrarySystem.setBackground(java.awt.Color.red);
-        lbl_LibrarySystem.setFont(new java.awt.Font("Serif", 3, 24)); // NOI18N
-        lbl_LibrarySystem.setForeground(java.awt.Color.red);
-        lbl_LibrarySystem.setText("UNIVERSITY OF HOUSTON - DOWNTOWN          Library");
-        jPanel1.add(lbl_LibrarySystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,6 +354,12 @@ public class Home extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btn_exitActionPerformed
 
+    private void btn_addStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addStaffActionPerformed
+        homeDesktop.removeAll();
+        TheStaff.AddStaff am = new TheStaff.AddStaff();
+        homeDesktop.add(am).setVisible(true);
+    }//GEN-LAST:event_btn_addStaffActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -381,6 +398,7 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_addBooks;
+    private javax.swing.JButton btn_addStaff;
     private javax.swing.JButton btn_addUsers;
     private javax.swing.JButton btn_allusers;
     private javax.swing.JButton btn_checkIn;
