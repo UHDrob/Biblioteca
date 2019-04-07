@@ -45,7 +45,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
     private static Scanner x;
     
    // Feb 19, 2019 Roberto: This section search for a Record in the file by Employee ID
-        public static void searchRecord (String searchterm, String filepath) throws FileNotFoundException
+        public static void searchBooks (String searchterm, String filepath) throws FileNotFoundException
         {
             boolean found = false;
             String bookid = "";
@@ -175,7 +175,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_titleBooks.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        lbl_titleBooks.setText("Books");
+        lbl_titleBooks.setText("Add Book");
         jPanel1.add(lbl_titleBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
         jPanel1.add(txt_searchBookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 9, 240, 30));
 
@@ -345,7 +345,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
         // Feb 19, 2019 Roberto: This section will search by Account
         String searchterm = txt_searchBookID.getText();
         try {
-            searchRecord(searchterm, filepath);
+            searchBooks(searchterm, filepath);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(AddBooks.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "SEARCH ERROR");

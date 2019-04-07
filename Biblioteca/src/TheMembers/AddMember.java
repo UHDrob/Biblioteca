@@ -181,7 +181,7 @@ public class AddMember extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_titleMembers.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
-        lbl_titleMembers.setText("Users");
+        lbl_titleMembers.setText("Add User");
         jPanel1.add(lbl_titleMembers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         lbl_accountLookup.setFont(new java.awt.Font("Dialog", 3, 11)); // NOI18N
@@ -255,7 +255,7 @@ public class AddMember extends javax.swing.JInternalFrame {
                 btn_clearActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 150, 40));
+        jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 90, 150, 40));
 
         btn_add.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_add.setText("ADD");
@@ -264,7 +264,7 @@ public class AddMember extends javax.swing.JInternalFrame {
                 btn_addActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 160, 150, 40));
+        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 130, 150, 40));
 
         btn_update.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_update.setText("UPDATE");
@@ -273,7 +273,7 @@ public class AddMember extends javax.swing.JInternalFrame {
                 btn_updateActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 150, 40));
+        jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, 150, 40));
 
         btn_delete.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_delete.setText("DELETE");
@@ -282,7 +282,7 @@ public class AddMember extends javax.swing.JInternalFrame {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 150, 40));
+        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, 150, 40));
 
         jTable_Members.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

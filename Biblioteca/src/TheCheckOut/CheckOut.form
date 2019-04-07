@@ -233,6 +233,9 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txt_bookid">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_bookidKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>

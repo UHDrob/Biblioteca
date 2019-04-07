@@ -1,2 +1,2 @@
-101010,Ethics,98123434,01-01-2000,fiction,video,pearson,125.00
-202020,Robotics Explorations,91231231,02-02-2002,non-fiction,Prentice Hill,145.00
+101010,Ethics,98123434,01-01-2000,fiction,book,pearson,125.00
+202020,Robotics-Explorations,91231231,02-02-2002,non-fiction,Prentice-Hill,book,145.00

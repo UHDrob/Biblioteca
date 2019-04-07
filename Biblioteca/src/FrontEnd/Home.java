@@ -36,10 +36,11 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbl_LibrarySystem = new javax.swing.JLabel();
         lbl_date = new javax.swing.JLabel();
         lbl_time = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
+        btn_inventory = new javax.swing.JButton();
+        btn_allusers = new javax.swing.JButton();
         btn_checkOut = new javax.swing.JButton();
         btn_checkIn = new javax.swing.JButton();
         btn_addUsers = new javax.swing.JButton();
@@ -47,15 +48,12 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         homeDesktop = new javax.swing.JDesktopPane();
-        jLabel3 = new javax.swing.JLabel();
+        lbl_title = new javax.swing.JLabel();
+        lbl_LibrarySystem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_LibrarySystem.setFont(new java.awt.Font("Serif", 3, 24)); // NOI18N
-        lbl_LibrarySystem.setText("Library System");
-        jPanel1.add(lbl_LibrarySystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         lbl_date.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lbl_date.setText("Date");
@@ -66,6 +64,39 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(lbl_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 170, -1));
 
         jToolBar1.setRollover(true);
+
+        btn_inventory.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        btn_inventory.setForeground(java.awt.Color.blue);
+        btn_inventory.setText("Inventory");
+        btn_inventory.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_inventory.setFocusable(false);
+        btn_inventory.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_inventory.setMaximumSize(new java.awt.Dimension(140, 27));
+        btn_inventory.setPreferredSize(new java.awt.Dimension(140, 27));
+        btn_inventory.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_inventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_inventoryActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_inventory);
+
+        btn_allusers.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        btn_allusers.setForeground(java.awt.Color.blue);
+        btn_allusers.setText("All Users");
+        btn_allusers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_allusers.setFocusable(false);
+        btn_allusers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_allusers.setMaximumSize(new java.awt.Dimension(140, 29));
+        btn_allusers.setPreferredSize(new java.awt.Dimension(140, 29));
+        btn_allusers.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_allusers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_allusersActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btn_allusers);
+
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 50));
 
         btn_checkOut.setText("Check Out");
@@ -84,7 +115,7 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel1.add(btn_checkIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
-        btn_addUsers.setText("Add Users");
+        btn_addUsers.setText("Add User");
         btn_addUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addUsersActionPerformed(evt);
@@ -92,7 +123,7 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel1.add(btn_addUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
-        btn_addBooks.setText("Add Books");
+        btn_addBooks.setText("Add Book");
         btn_addBooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addBooksActionPerformed(evt);
@@ -119,8 +150,16 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.add(homeDesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 1010, 570));
 
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1190, 50));
+        lbl_title.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_title.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1190, 50));
+
+        lbl_LibrarySystem.setBackground(java.awt.Color.red);
+        lbl_LibrarySystem.setFont(new java.awt.Font("Serif", 3, 24)); // NOI18N
+        lbl_LibrarySystem.setForeground(java.awt.Color.red);
+        lbl_LibrarySystem.setText("UNIVERSITY OF HOUSTON - DOWNTOWN          Library");
+        jPanel1.add(lbl_LibrarySystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,6 +173,7 @@ public class Home extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void clock()
@@ -201,6 +241,18 @@ public class Home extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_checkInActionPerformed
 
+    private void btn_inventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inventoryActionPerformed
+        homeDesktop.removeAll();
+        TheBooks.Inventory inv = new TheBooks.Inventory();
+        homeDesktop.add(inv).setVisible(true);
+    }//GEN-LAST:event_btn_inventoryActionPerformed
+
+    private void btn_allusersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_allusersActionPerformed
+        homeDesktop.removeAll();
+        TheMembers.AllUsers au = new TheMembers.AllUsers();
+        homeDesktop.add(au).setVisible(true);
+    }//GEN-LAST:event_btn_allusersActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -240,16 +292,18 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_addBooks;
     private javax.swing.JButton btn_addUsers;
+    private javax.swing.JButton btn_allusers;
     private javax.swing.JButton btn_checkIn;
     private javax.swing.JButton btn_checkOut;
+    private javax.swing.JButton btn_inventory;
     private javax.swing.JDesktopPane homeDesktop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lbl_LibrarySystem;
     private javax.swing.JLabel lbl_date;
     private javax.swing.JLabel lbl_time;
+    private javax.swing.JLabel lbl_title;
     // End of variables declaration//GEN-END:variables
 }

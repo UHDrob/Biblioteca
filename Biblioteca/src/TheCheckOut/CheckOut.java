@@ -137,6 +137,12 @@ public class CheckOut extends javax.swing.JInternalFrame {
 
         panel_books.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
+        txt_bookid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_bookidKeyReleased(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jLabel1.setText("Book ID");
 
@@ -354,8 +360,7 @@ public class CheckOut extends javax.swing.JInternalFrame {
                     
                     if ( account.equals(searchterm))
                     {
-                        found = true;
-                      
+                        found = true;                      
                     }
                 }
                 if (found)
@@ -363,25 +368,77 @@ public class CheckOut extends javax.swing.JInternalFrame {
                     txt_firstname.setText(firstName);
                     txt_lastname.setText(lastName);
                     txt_status.setText(status);
-                            
                 }
                 else
                 {
                     count = count + 1;
                     if (count > 4)
                     {
-                    JOptionPane.showMessageDialog(null,"record NOT found");
+                    JOptionPane.showMessageDialog(null,"ACCOUNT NOT found");
                     }
                 }
-                
             }
             catch (Exception e)
             {
                 JOptionPane.showMessageDialog(null, "Error");
-            }
-                    
+            }   
         }
     
+       // Feb 19, 2019 Roberto: This section search for a book in the file by Book ID
+        public void searchBooks (String searchterm, String filepath) throws FileNotFoundException
+        {
+            int count = 0;
+            Scanner x;
+            boolean found = false;
+            String bookid = "";
+            String booktitle = "";
+            String barcode = "";
+            String bookdate;
+            String category;
+            String booktype = null;
+            String publisher;
+            String bookprice;
+            
+            try
+            {
+                x = new Scanner(new File(filepath));
+                x.useDelimiter("[,\n]");
+                
+                while(x.hasNext() && !found )
+                {
+                    bookid = x.next();
+                    booktitle = x.next();
+                    barcode = x.next();
+                    bookdate = x.next();                
+                    category = x.next();
+                    booktype = x.next();
+                    publisher = x.next();
+                    bookprice = x.next();
+                    
+                    if ( bookid.equals(searchterm))
+                    {
+                        found = true;
+                    }
+                }
+                if (found)
+                {
+                    txt_booktitle.setText(booktitle);
+                    txt_booktype.setText(booktype);     
+                }
+                else
+                {
+                    count = count + 1;
+                    if (count > 6)
+                    {
+                        JOptionPane.showMessageDialog(null,"BOOK NOT found");
+                    }
+                }                
+            }
+            catch (Exception e)
+            {
+                JOptionPane.showMessageDialog(null, "Error ON EXCEPTION" + e);
+            }   
+        }
     
     
     
@@ -394,9 +451,21 @@ public class CheckOut extends javax.swing.JInternalFrame {
             searchAccount(searchterm, "member.txt");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CheckOut.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "SEARCH ERROR");
+            JOptionPane.showMessageDialog(null, "SEARCH Account ERROR");
         }
     }//GEN-LAST:event_txt_accountKeyReleased
+
+    private void txt_bookidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_bookidKeyReleased
+        // Feb 19, 2019 Roberto: This section will search by Book ID
+        String searchterm = txt_bookid.getText();
+
+        try {
+            searchBooks(searchterm, "book.txt");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CheckOut.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "SEARCH Book ERROR");
+        }
+    }//GEN-LAST:event_txt_bookidKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
