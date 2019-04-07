@@ -51,6 +51,8 @@ public class CheckIn extends javax.swing.JInternalFrame {
         txt_ticket = new javax.swing.JTextArea();
         btn_print = new javax.swing.JButton();
 
+        setClosable(true);
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel_title.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));

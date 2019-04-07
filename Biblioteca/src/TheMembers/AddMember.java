@@ -48,7 +48,7 @@ public class AddMember extends javax.swing.JInternalFrame {
     
     
    // Feb 19, 2019 Roberto: This section search for a Record in the file by Employee ID
-        public static void searchRecord (String searchterm, String filepath) throws FileNotFoundException
+        public static void searchAccount (String searchterm, String filepath) throws FileNotFoundException
         {
             boolean found = false;
             String account = "";
@@ -362,7 +362,7 @@ public class AddMember extends javax.swing.JInternalFrame {
         // Feb 19, 2019 Roberto: This section will search by Account
         String searchterm = txt_searchAccount.getText();
         try {
-            searchRecord(searchterm, filepath);
+            searchAccount(searchterm, filepath);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(AddMember.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "SEARCH ERROR");

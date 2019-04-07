@@ -5,6 +5,13 @@
  */
 package TheCheckOut;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rob77
@@ -54,10 +61,12 @@ public class CheckOut extends javax.swing.JInternalFrame {
         lbl_firstname = new javax.swing.JLabel();
         lbl_lastname = new javax.swing.JLabel();
         lbl_status = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_account = new javax.swing.JTextField();
         txt_firstname = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txt_lastname = new javax.swing.JTextField();
+        txt_status = new javax.swing.JTextField();
+
+        setClosable(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -246,6 +255,12 @@ public class CheckOut extends javax.swing.JInternalFrame {
         lbl_status.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_status.setText("Status");
 
+        txt_account.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_accountKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -259,10 +274,10 @@ public class CheckOut extends javax.swing.JInternalFrame {
                     .addComponent(lbl_status))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
+                    .addComponent(txt_account)
                     .addComponent(txt_firstname)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(jTextField3))
+                    .addComponent(txt_lastname, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(txt_status))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -271,7 +286,7 @@ public class CheckOut extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_account)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_account, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_firstname)
@@ -279,10 +294,10 @@ public class CheckOut extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_lastname)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_status))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
@@ -305,6 +320,84 @@ public class CheckOut extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+       // Feb 19, 2019 Roberto: This section search for a Record in the file by Employee ID
+        public void searchAccount (String searchterm, String filepath) throws FileNotFoundException
+        {
+            int count = 0;
+            Scanner x;
+            boolean found = false;
+            String account = "";
+            String firstName = "";
+            String lastName = "";
+            String birthday;
+            String gender;
+            String email;
+            String phone;
+            String status = null;
+            
+            try
+            {
+                x = new Scanner(new File(filepath));
+                x.useDelimiter("[,\n]");
+                
+                while(x.hasNext() && !found )
+                {
+                    account = x.next();
+                    firstName = x.next();
+                    lastName = x.next();
+                    birthday = x.next();                
+                    gender = x.next();
+                    email = x.next();
+                    phone = x.next();
+                    status = x.next();
+                    
+                    if ( account.equals(searchterm))
+                    {
+                        found = true;
+                      
+                    }
+                }
+                if (found)
+                {
+                    txt_firstname.setText(firstName);
+                    txt_lastname.setText(lastName);
+                    txt_status.setText(status);
+                            
+                }
+                else
+                {
+                    count = count + 1;
+                    if (count > 4)
+                    {
+                    JOptionPane.showMessageDialog(null,"record NOT found");
+                    }
+                }
+                
+            }
+            catch (Exception e)
+            {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+                    
+        }
+    
+    
+    
+    
+    
+    private void txt_accountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_accountKeyReleased
+        // Feb 19, 2019 Roberto: This section will search by Account
+        String searchterm = txt_account.getText();
+
+        try {
+            searchAccount(searchterm, "member.txt");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CheckOut.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "SEARCH ERROR");
+        }
+    }//GEN-LAST:event_txt_accountKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_checkout;
@@ -318,9 +411,6 @@ public class CheckOut extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lbl_account;
     private javax.swing.JLabel lbl_firstname;
     private javax.swing.JLabel lbl_issuedate;
@@ -331,12 +421,15 @@ public class CheckOut extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panel_books;
     private javax.swing.JPanel panel_controls;
     private javax.swing.JPanel panel_dates;
+    private javax.swing.JTextField txt_account;
     private javax.swing.JTextField txt_bookid;
     private javax.swing.JTextField txt_booktitle;
     private javax.swing.JTextField txt_booktype;
     private javax.swing.JTextField txt_firstname;
     private javax.swing.JTextField txt_issuedate;
+    private javax.swing.JTextField txt_lastname;
     private javax.swing.JTextField txt_returndate;
+    private javax.swing.JTextField txt_status;
     private javax.swing.JLabel txt_transaction;
     // End of variables declaration//GEN-END:variables
 }
