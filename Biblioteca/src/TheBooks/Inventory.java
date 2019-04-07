@@ -7,6 +7,7 @@ package TheBooks;
 
 
 import TheBooks.BooksObject.Book;
+import java.awt.Color;
 import java.awt.print.PrinterException;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -25,6 +26,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  * Created Mar 23 2019
@@ -175,13 +177,13 @@ public class Inventory extends javax.swing.JInternalFrame {
         jPanel1.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 150, 40));
 
         btn_print.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        btn_print.setText("Print");
+        btn_print.setText("Create Inventory Report");
         btn_print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_printActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 490, -1, -1));
+        jPanel1.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 490, -1, -1));
 
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
@@ -303,6 +305,10 @@ public class Inventory extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) jTable_Books.getModel();
         model.setRowCount(0);
      
+        JTableHeader Theader = jTable_Books.getTableHeader();
+        Theader.setBackground(Color.blue);
+        Theader.setForeground(Color.WHITE );
+        
         ArrayList<Book> list = getListBooks();
        
         Object rowData[] = new Object[8];

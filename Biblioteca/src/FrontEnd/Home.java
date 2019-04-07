@@ -49,7 +49,7 @@ public class Home extends javax.swing.JFrame {
         btn_checkIn = new javax.swing.JButton();
         btn_addUsers = new javax.swing.JButton();
         btn_addBooks = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblUHDbackground = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         homeDesktop = new javax.swing.JDesktopPane();
         lbl_title = new javax.swing.JLabel();
@@ -183,24 +183,30 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel1.add(btn_checkIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
+        btn_addUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/Users.jpg"))); // NOI18N
         btn_addUsers.setText("Add User");
+        btn_addUsers.setMaximumSize(new java.awt.Dimension(148, 73));
+        btn_addUsers.setMinimumSize(new java.awt.Dimension(148, 73));
         btn_addUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addUsersActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_addUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        jPanel1.add(btn_addUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 250, 160, -1));
 
+        btn_addBooks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/books.jpg"))); // NOI18N
         btn_addBooks.setText("Add Book");
         btn_addBooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addBooksActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_addBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+        jPanel1.add(btn_addBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 340, 160, 60));
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1200, 620));
+        lblUHDbackground.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUHDbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Graphics/uh_downtown.jpg"))); // NOI18N
+        lblUHDbackground.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(lblUHDbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1200, 620));
 
         jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 180, 570));
@@ -385,10 +391,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton btn_tool1;
     private javax.swing.JButton btn_tool2;
     private javax.swing.JDesktopPane homeDesktop;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblUHDbackground;
     private javax.swing.JLabel lbl_LibrarySystem;
     private javax.swing.JLabel lbl_date;
     private javax.swing.JLabel lbl_time;

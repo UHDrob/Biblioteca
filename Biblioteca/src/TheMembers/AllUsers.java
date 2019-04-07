@@ -7,6 +7,7 @@ package TheMembers;
 
 
 import TheMembers.MembersObject.Member;
+import java.awt.Color;
 import java.awt.print.PrinterException;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -23,6 +24,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  * Created Mar 23 2019
@@ -178,13 +180,13 @@ public class AllUsers extends javax.swing.JInternalFrame {
         jPanel1.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 150, 40));
 
         btn_print.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        btn_print.setText("Print");
+        btn_print.setText("Create Users Report");
         btn_print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_printActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 490, -1, -1));
+        jPanel1.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, -1, -1));
 
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
@@ -216,7 +218,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,7 +310,11 @@ public class AllUsers extends javax.swing.JInternalFrame {
     {
         DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
         model.setRowCount(0);
-        //DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
+        
+        JTableHeader Theader = jTable_Members.getTableHeader();
+        Theader.setBackground(Color.blue);
+        Theader.setForeground(Color.WHITE );
+        
         ArrayList<Member> list = getListMembers();
         
         Object rowData[] = new Object[8];

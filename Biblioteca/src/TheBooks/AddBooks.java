@@ -7,6 +7,7 @@ package TheBooks;
 
 
 import TheBooks.BooksObject.Book;
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  * Created Mar 23 2019
@@ -432,7 +434,11 @@ public class AddBooks extends javax.swing.JInternalFrame {
     {
         DefaultTableModel model = (DefaultTableModel) jTable_Books.getModel();
         model.setRowCount(0);
-     
+        
+        JTableHeader Theader = jTable_Books.getTableHeader();
+        Theader.setBackground(Color.blue);
+        Theader.setForeground(Color.WHITE );
+        
         ArrayList<Book> list = getListBooks();
        
         Object rowData[] = new Object[8];

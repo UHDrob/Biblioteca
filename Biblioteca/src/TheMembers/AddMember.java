@@ -7,6 +7,7 @@ package TheMembers;
 
 
 import TheMembers.MembersObject.Member;
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,6 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  * Created Mar 23 2019
@@ -501,6 +503,10 @@ public class AddMember extends javax.swing.JInternalFrame {
         model.setRowCount(0);
         //DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
         ArrayList<Member> list = getListMembers();
+        
+        JTableHeader Theader = jTable_Members.getTableHeader();
+        Theader.setBackground(Color.blue);
+        Theader.setForeground(Color.WHITE );
         
         Object rowData[] = new Object[8];
         for(int i=0; i < list.size(); i++)
