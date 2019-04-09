@@ -14,7 +14,8 @@ public class AddBook extends javax.swing.JInternalFrame {
     /**
      * Creates new form AddBook
      */
-    public AddBook() {
+    public AddBook() 
+    {
         initComponents();
     }
 

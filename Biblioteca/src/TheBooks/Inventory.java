@@ -1,6 +1,6 @@
 /*
  * INVENTORY FORM
- * FIELDS:  BookID, Book Title, BarCode, Book Date, Category, Book Type, Publisher, Price
+ * FIELDS:  BookID, Title, Author, ISBN, Genre, Price, Media Type
  * FILE:   book.txt
  */
 package TheBooks;
@@ -55,12 +55,11 @@ public class Inventory extends javax.swing.JInternalFrame {
             boolean found = false;
             String bookid = "";
             String booktitle = "";
-            String barcode = "";
-            String bookdate;
-            String category;
-            String booktype;
-            String publisher;
-            String bookprice;
+            String author = "";
+            String ISBN;
+            String genre;
+            String price;
+            String mediaType;
             
             try
             {
@@ -71,12 +70,11 @@ public class Inventory extends javax.swing.JInternalFrame {
                 {
                     bookid = x.next();
                     booktitle = x.next();
-                    barcode = x.next();
-                    bookdate = x.next();                
-                    category = x.next();
-                    booktype = x.next();
-                    publisher = x.next();
-                    bookprice = x.next();
+                    author = x.next();
+                    ISBN = x.next();                
+                    genre = x.next();
+                    price = x.next();
+                    mediaType = x.next();
                     
                     if ( booktitle.equals(searchterm))
                     {
@@ -87,7 +85,7 @@ public class Inventory extends javax.swing.JInternalFrame {
                 {
                     JOptionPane.showMessageDialog(null, "Book ID: " + bookid
                             + "\nBook Title: " + booktitle
-                            + "\nBarcode: " + barcode);                            
+                            + "\nBarcode: " + author);                            
                 }
                 else
                 {
@@ -101,7 +99,7 @@ public class Inventory extends javax.swing.JInternalFrame {
         }
     
         // Feb 19, 2019 Roberto: This section will save the new record in the file
-        public static void saveRecord(String bID, String bTitle, String bCode, String bDate, String cat, String bType, String pub, String bPrice, String FilePath)
+        public static void saveRecord(String bID, String bTitle, String bAuthor, String bISBN, String bGenre, String bPrice, String mediaType, String FilePath)
         {
             try
             {
@@ -109,9 +107,9 @@ public class Inventory extends javax.swing.JInternalFrame {
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
                 
-                pw.println(bID + ", " + bTitle + ", " + bCode + ", "
-                        + bDate + ", " + cat + ", " + bType + ", "
-                        + pub + ", " + bPrice + "\n");
+                pw.println(bID + ", " + bTitle + ", " + bAuthor + ", "
+                        + bISBN + ", " + bGenre + ", " + bPrice+ ", "
+                        + mediaType +"\n");
                 pw.flush();
                 pw.close();
                 
@@ -193,7 +191,7 @@ public class Inventory extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Book ID", "Book Title", "Barcode", "Book Date", "Category", "Book Type", "Publisher", "Book Price"
+                "Book ID", "Title", "Author ", "ISBN", "Genre", "Price", "Media Type"
             }
         ));
         jTable_Books.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -260,12 +258,11 @@ public class Inventory extends javax.swing.JInternalFrame {
         {
             String bookID = ""; 
             String bookTitle = ""; 
-            String barcode = "";
-            String bookDate = "";
-            String category = "";
-            String bookType = "";
-            String publisher = "";
-            String bookPrice = "";
+            String author = "";
+            String ISBN = "";
+            String genre= "";
+            String price= "";
+            String mediaType = "";
             
             ArrayList<Book> bookArrayList = new ArrayList<Book>();
 
@@ -279,14 +276,13 @@ public class Inventory extends javax.swing.JInternalFrame {
                 {
                     bookID = x.next();
                     bookTitle = x.next();
-                    barcode = x.next();
-                    bookDate = x.next();                
-                    category = x.next();
-                    bookType = x.next();
-                    publisher = x.next();
-                    bookPrice = x.next();
+                    author = x.next();
+                    genre = x.next();                
+                    ISBN = x.next();
+                    price = x.next();
+                    mediaType = x.next();
                                   
-                    Book line = new Book(bookID, bookTitle, barcode, bookDate, category, bookType, publisher, bookPrice);
+                    Book line = new Book(bookID, bookTitle, author, genre, ISBN, price, mediaType);
                     bookArrayList.add(line);
                 }
             }
@@ -311,17 +307,16 @@ public class Inventory extends javax.swing.JInternalFrame {
         
         ArrayList<Book> list = getListBooks();
        
-        Object rowData[] = new Object[8];
+        Object rowData[] = new Object[7];
         for(int i=0; i < list.size(); i++)
         {
             rowData[0] = list.get(i).getbookid();
             rowData[1] = list.get(i).getbooktitle();
-            rowData[2] = list.get(i).getbarcode();
-            rowData[3] = list.get(i).getbookday();
-            rowData[4] = list.get(i).getcategory();
-            rowData[5] = list.get(i).getbooktype();
-            rowData[6] = list.get(i).getpublisher();
-            rowData[7] = list.get(i).getbookprice();
+            rowData[2] = list.get(i).getauthor();
+            rowData[3] = list.get(i).getisbn();
+            rowData[4] = list.get(i).getgenre();
+            rowData[5] = list.get(i).getprice();
+            rowData[6] = list.get(i).getmediaType();
             model.addRow(rowData);
         }
         
@@ -335,12 +330,11 @@ public class Inventory extends javax.swing.JInternalFrame {
             boolean found = false;
             String bookID = ""; 
             String bookTitle = ""; 
-            String barcode = "";
-            String bookDate ="";
-            String category = "";
-            String bookType = "";
-            String publisher = "";
-            String bookPrice = "";
+            String author = "";
+            String isbn ="";
+            String genre = "";
+            String price = "";
+            String mediaType = "";
             
             try
             {
@@ -350,13 +344,11 @@ public class Inventory extends javax.swing.JInternalFrame {
                 {
                     bookID = x.next();
                     bookTitle = x.next();
-                    barcode = x.next();
-                    bookDate = x.next();
-                    category = x.next();
-                    bookType = x.next();
-                    publisher = x.next();
-                    JOptionPane.showMessageDialog(null, publisher);
-                    bookPrice = x.next();
+                    author = x.next();
+                    isbn = x.next();
+                    genre = x.next();
+                    price = x.next();
+                    mediaType= x.next();
 
                 }
             }

@@ -1,6 +1,6 @@
 /*
  * BOOKS FORM
- * FIELDS:  BookID, Book Title, BarCode, Book Date, Category, Book Type, Publisher, Price
+ * FIELDS:  BookID, Book Title, Author, ISBN, Genre, Price, Media Type
  * FILE:   book.txt
  */
 package TheBooks;
@@ -14,10 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,12 +49,11 @@ public class AddBooks extends javax.swing.JInternalFrame {
             boolean found = false;
             String bookid = "";
             String booktitle = "";
-            String barcode = "";
-            String bookdate;
-            String category;
-            String booktype;
-            String publisher;
-            String bookprice;
+            String author = "";
+            String genre = "";
+            String isbn;
+            String price;
+            String mediaType;
             
             try
             {
@@ -68,12 +64,11 @@ public class AddBooks extends javax.swing.JInternalFrame {
                 {
                     bookid = x.next();
                     booktitle = x.next();
-                    barcode = x.next();
-                    bookdate = x.next();                
-                    category = x.next();
-                    booktype = x.next();
-                    publisher = x.next();
-                    bookprice = x.next();
+                    author = x.next();
+                    genre = x.next();
+                    isbn = x.next();
+                    price = x.next();
+                    mediaType = x.next();
                     
                     if ( bookid.equals(searchterm))
                     {
@@ -84,7 +79,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
                 {
                     JOptionPane.showMessageDialog(null, "Account: " + bookid
                             + "\nBook Title: " + booktitle
-                            + "\nBarcode: " + barcode);                            
+                            + "\nBarcode: " + author);                            
                 }
                 else
                 {
@@ -98,7 +93,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
         }
     
         // Feb 19, 2019 Roberto: This section will save the new record in the file
-        public static void saveRecord(String bID, String bTitle, String bCode, String bDate, String cat, String bType, String pub, String bPrice, String FilePath)
+        public static void saveRecord(String bID, String bTitle, String bAuthor, String bGenre, String isbn, String bPrice, String bMedia, String FilePath)
         {
             try
             {
@@ -106,9 +101,8 @@ public class AddBooks extends javax.swing.JInternalFrame {
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter pw = new PrintWriter(bw);
                 
-                pw.println(bID + ", " + bTitle + ", " + bCode + ", "
-                        + bDate + ", " + cat + ", " + bType + ", "
-                        + pub + ", " + bPrice + "\n");
+                pw.println(bID + ", " + bTitle + ", " + bAuthor+ ", "
+                         + bGenre+ ", "+ isbn + ", " + bPrice+ ", " + bMedia +"\n");
                 pw.flush();
                 pw.close();
                 
@@ -148,18 +142,16 @@ public class AddBooks extends javax.swing.JInternalFrame {
         lbl_account = new javax.swing.JLabel();
         lbl_firstName = new javax.swing.JLabel();
         lbl_lastName = new javax.swing.JLabel();
-        lbl_Birthday = new javax.swing.JLabel();
         lbl_gender = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
         lbl_phone = new javax.swing.JLabel();
         lbl_status = new javax.swing.JLabel();
         txt_bookID = new javax.swing.JTextField();
         txt_bookTitle = new javax.swing.JTextField();
-        txt_barcode = new javax.swing.JTextField();
-        txt_bookDate = new com.toedter.calendar.JDateChooser();
+        txt_author = new javax.swing.JTextField();
         combo_category = new javax.swing.JComboBox<>();
         combo_booktype = new javax.swing.JComboBox<>();
-        txt_publisher = new javax.swing.JTextField();
+        txt_isbn = new javax.swing.JTextField();
         txt_bookPrice = new javax.swing.JTextField();
         btn_clear = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
@@ -195,50 +187,47 @@ public class AddBooks extends javax.swing.JInternalFrame {
 
         lbl_account.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_account.setText("Book ID");
-        jPanel1.add(lbl_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jPanel1.add(lbl_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         lbl_firstName.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_firstName.setText("Book Title");
-        jPanel1.add(lbl_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        jPanel1.add(lbl_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         lbl_lastName.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_lastName.setText("Barcode");
-        jPanel1.add(lbl_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
-
-        lbl_Birthday.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_Birthday.setText("Book Date");
-        jPanel1.add(lbl_Birthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        lbl_lastName.setText("Author");
+        jPanel1.add(lbl_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         lbl_gender.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_gender.setText("Category");
-        jPanel1.add(lbl_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        lbl_gender.setText("Genre");
+        jPanel1.add(lbl_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
 
         lbl_email.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_email.setText("Book Type");
-        jPanel1.add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
+        lbl_email.setText("Media Type");
+        jPanel1.add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, -1));
 
         lbl_phone.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        lbl_phone.setText("Publisher");
-        jPanel1.add(lbl_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
+        lbl_phone.setText("ISBN ");
+        jPanel1.add(lbl_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
         lbl_status.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         lbl_status.setText("Book Price");
-        jPanel1.add(lbl_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
+        jPanel1.add(lbl_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
         jPanel1.add(txt_bookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 160, 30));
-        jPanel1.add(txt_bookTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 160, 30));
-        jPanel1.add(txt_barcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 160, 30));
+        jPanel1.add(txt_bookTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 160, 30));
+        jPanel1.add(txt_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 160, 30));
 
-        txt_bookDate.setDateFormatString("MM, dd, yyyy");
-        txt_bookDate.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
-        jPanel1.add(txt_bookDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 150, 30));
-
-        combo_category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category", "fiction", "non-fiction" }));
-        jPanel1.add(combo_category, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 150, 30));
+        combo_category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category", "FIction", "Non-Fiction" }));
+        combo_category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_categoryActionPerformed(evt);
+            }
+        });
+        jPanel1.add(combo_category, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 150, 30));
 
         combo_booktype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "book", "video", "audio" }));
-        jPanel1.add(combo_booktype, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 150, 30));
-        jPanel1.add(txt_publisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 160, 30));
-        jPanel1.add(txt_bookPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 160, 30));
+        jPanel1.add(combo_booktype, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 150, 30));
+        jPanel1.add(txt_isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, 30));
+        jPanel1.add(txt_bookPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 160, 30));
 
         btn_clear.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         btn_clear.setText("CLEAR");
@@ -276,7 +265,7 @@ public class AddBooks extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Book ID", "Book Title", "Barcode", "Book Date", "Category", "Book Type", "Publisher", "Book Price"
+                "Book ID", "Book Title", "Author", "ISBN", "Genre", "Price", "Media Type"
             }
         ));
         jTable_Books.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -318,24 +307,27 @@ public class AddBooks extends javax.swing.JInternalFrame {
         // Feb 19, 2019 Roberto: This section will add the new record to the file
         if (checkInputs())    // verify the fields are not empty
         {
-            String account = txt_bookID.getText();
-            String firstname = txt_bookTitle.getText();
-            String lastname = txt_barcode.getText();
+            String ID = txt_bookID.getText();
+            String title = txt_bookTitle.getText();
+            String author = txt_author.getText();
             
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy"); //  yyyy-MM-dd
-            String addDate = dateFormat.format(txt_bookDate.getDate());
-            String birthday = addDate;
+            //SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy"); //  yyyy-MM-dd
+            //String addDate = dateFormat.format(txt_bookDate.getDate());
+            //String birthday = addDate;
             
-            String gender = combo_category.getSelectedItem().toString();
-
-            String email = txt_bookPrice.getText();
-            String phone = txt_publisher.getText();
-            String status = combo_booktype.getSelectedItem().toString();
-             
-            saveRecord(account, firstname, lastname, birthday, gender, email, phone, status, filepath);
+            //String gender = combo_category.getSelectedItem().toString();
+            String isbn = txt_isbn.getText();
+            String price = txt_bookPrice.getText();
             
-            JOptionPane.showMessageDialog(null, "New Book has been created");
-            Show_Books_In_JTable();
+            String media = combo_booktype.getSelectedItem().toString();
+            String genre = combo_category.getSelectedItem().toString();
+            if (!"Select Category".equals(combo_category)&& !"Select Type".equals(combo_booktype) )
+            {
+                saveRecord(ID, title, author, isbn, genre, price, media, filepath);
+            
+                JOptionPane.showMessageDialog(null, "New Book has been created");
+                Show_Books_In_JTable();
+            }    
         }
         else
         {
@@ -360,9 +352,9 @@ public class AddBooks extends javax.swing.JInternalFrame {
         // Feb 19, 2019 Roberto; This section will search by Account
         txt_bookID.setText(null);
         txt_bookTitle.setText(null);
-        txt_barcode.setText(null);
+        txt_author.setText(null);
         txt_bookPrice.setText(null);
-        txt_publisher.setText(null);
+        txt_isbn.setText(null);
         
     }//GEN-LAST:event_btn_clearActionPerformed
 
@@ -383,6 +375,10 @@ public class AddBooks extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
+    private void combo_categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_categoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_categoryActionPerformed
+
     
     
     // Define BEHAVIOR
@@ -390,12 +386,11 @@ public class AddBooks extends javax.swing.JInternalFrame {
         {
             String bookID = ""; 
             String bookTitle = ""; 
-            String barcode = "";
-            String bookDate = "";
-            String category = "";
-            String bookType = "";
-            String publisher = "";
-            String bookPrice = "";
+            String author = "";
+            String isbn = "";
+            String genre = "";
+            String price = "";
+            String mediaType = "";
             
             ArrayList<Book> bookArrayList = new ArrayList<Book>();
 
@@ -409,14 +404,13 @@ public class AddBooks extends javax.swing.JInternalFrame {
                 {
                     bookID = x.next();
                     bookTitle = x.next();
-                    barcode = x.next();
-                    bookDate = x.next();                
-                    category = x.next();
-                    bookType = x.next();
-                    publisher = x.next();
-                    bookPrice = x.next();
+                    author = x.next();
+                    isbn = x.next();                
+                    genre = x.next();
+                    price = x.next();
+                    mediaType = x.next();
                                   
-                    Book line = new Book(bookID, bookTitle, barcode, bookDate, category, bookType, publisher, bookPrice);
+                    Book line = new Book(bookID, bookTitle, author, isbn, genre, price, mediaType);
                     bookArrayList.add(line);
                 }
             }
@@ -441,17 +435,16 @@ public class AddBooks extends javax.swing.JInternalFrame {
         
         ArrayList<Book> list = getListBooks();
        
-        Object rowData[] = new Object[8];
+        Object rowData[] = new Object[7];
         for(int i=0; i < list.size(); i++)
         {
             rowData[0] = list.get(i).getbookid();
             rowData[1] = list.get(i).getbooktitle();
-            rowData[2] = list.get(i).getbarcode();
-            rowData[3] = list.get(i).getbookday();
-            rowData[4] = list.get(i).getcategory();
-            rowData[5] = list.get(i).getbooktype();
-            rowData[6] = list.get(i).getpublisher();
-            rowData[7] = list.get(i).getbookprice();
+            rowData[2] = list.get(i).getauthor();
+            rowData[3] = list.get(i).getisbn();
+            rowData[4] = list.get(i).getgenre();
+            rowData[5] = list.get(i).getprice();
+            rowData[6] = list.get(i).getmediaType();
             model.addRow(rowData);
         }
         
@@ -465,12 +458,11 @@ public class AddBooks extends javax.swing.JInternalFrame {
             boolean found = false;
             String bookID = ""; 
             String bookTitle = ""; 
-            String barcode = "";
-            String bookDate ="";
-            String category = "";
-            String bookType = "";
-            String publisher = "";
-            String bookPrice = "";
+            String author= "";
+            String isbn ="";
+            String genre = "";
+            String price = "";
+            String media = "";
             
             try
             {
@@ -480,14 +472,11 @@ public class AddBooks extends javax.swing.JInternalFrame {
                 {
                     bookID = x.next();
                     bookTitle = x.next();
-                    barcode = x.next();
-                    bookDate = x.next();
-                    category = x.next();
-                    bookType = x.next();
-                    publisher = x.next();
-                    JOptionPane.showMessageDialog(null, publisher);
-                    bookPrice = x.next();
-
+                    author = x.next();
+                    isbn = x.next();
+                    genre = x.next();
+                    price = x.next();
+                    media = x.next();
                 }
             }
             catch(Exception e)
@@ -500,11 +489,12 @@ public class AddBooks extends javax.swing.JInternalFrame {
    // Feb 19 2019 Roberto: Check Input Fields to verify they are not empty
         public boolean checkInputs()
         {
-            if (    txt_bookID.getText() == null
-                    || txt_bookTitle.getText() == null
-                    || txt_barcode.getText() == null
-                    || txt_bookPrice.getText() == null
-                    || txt_publisher.getText() == null)
+            if (    // check to make sure all fields have a value  
+                txt_bookID.getText().equals("") 
+                || txt_bookTitle.getText().equals("")
+                || txt_author.getText().equals("")   
+                || txt_isbn.getText().equals("")    
+                || txt_bookPrice.getText().equals(""))
             {
                 return false;
             } 
@@ -520,29 +510,20 @@ public class AddBooks extends javax.swing.JInternalFrame {
     {
                     txt_bookID.setText(getListBooks().get(index).getbookid());
                     txt_bookTitle.setText(getListBooks().get(index).getbooktitle());
-                    txt_barcode.setText(getListBooks().get(index).getbarcode());
+                    txt_author.setText(getListBooks().get(index).getauthor());
                     
-                    try 
-                    {
-                        Date addDate = null;
-                        addDate = new SimpleDateFormat("MM-dd-yyyy").parse((String)getListBooks().get(index).getbookday());
-                        txt_bookDate.setDate(addDate);     
-                    } catch (ParseException ex) 
-                            {
-                                Logger.getLogger(AddBooks.class.getName()).log(Level.SEVERE, null, ex);
-                            }
                     
-                    if ( getListBooks().get(index).getcategory().equals("fiction"))
+                    if ( getListBooks().get(index).getgenre().equals("Fiction"))
                             {   
-                                combo_category.setSelectedItem("fiction");
+                                combo_category.setSelectedItem("Fiction");
                             }
                     else
                         {
-                            combo_category.setSelectedItem("non-fiction");
+                            combo_category.setSelectedItem("Non-Fiction");
                         }
  
                     
-                    if ( getListBooks().get(index).getbooktype().equals("video"))
+                    if ( getListBooks().get(index).getmediaType().equals("video"))
                             {   
                                 combo_category.setSelectedItem("video");
                             }
@@ -550,22 +531,10 @@ public class AddBooks extends javax.swing.JInternalFrame {
                         {
                             combo_category.setSelectedItem("book");
                         }
-             //       switch (getListBooks().get(index).getbooktype()) 
-             //       {
-             //           case "book":
-             //               combo_bookType.setSelectedItem("book");
-             //               break;
-             //           case "dvd":
-             //               combo_bookType.setSelectedItem("dvd");
-             //               break;
-             //           default:
-             //               combo_bookType.setSelectedItem("audio");
-             //               break;
-             //       }
+        
                     
-                    txt_publisher.setText(getListBooks().get(index).getpublisher());
-                    txt_bookPrice.setText(getListBooks().get(index).getbookprice());
-
+                    txt_isbn.setText(getListBooks().get(index).getisbn());
+                    txt_bookPrice.setText(getListBooks().get(index).getprice());
     }
         
 
@@ -584,7 +553,6 @@ public class AddBooks extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable_Books;
-    private javax.swing.JLabel lbl_Birthday;
     private javax.swing.JLabel lbl_account;
     private javax.swing.JLabel lbl_control;
     private javax.swing.JLabel lbl_email;
@@ -594,12 +562,11 @@ public class AddBooks extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_phone;
     private javax.swing.JLabel lbl_status;
     private javax.swing.JLabel lbl_titleBooks;
-    private javax.swing.JTextField txt_barcode;
-    private com.toedter.calendar.JDateChooser txt_bookDate;
+    private javax.swing.JTextField txt_author;
     private javax.swing.JTextField txt_bookID;
     private javax.swing.JTextField txt_bookPrice;
     private javax.swing.JTextField txt_bookTitle;
-    private javax.swing.JTextField txt_publisher;
+    private javax.swing.JTextField txt_isbn;
     private javax.swing.JTextField txt_searchBookID;
     // End of variables declaration//GEN-END:variables
 }

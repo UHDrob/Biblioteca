@@ -21,69 +21,59 @@ public class BooksObject
     {
         private String bookIdArray;
         private String bookTitleArray;
-        private String barcodeArray;
-        private String bookDateArray;
-        private String categoryArray;
-        private String bookTypeArray;
-        private String publisherArray;
-        private String bookPriceArray;
+        private String authorArray;
+        private String isbnArray;
+        private String genreArray;
+        private String priceArray;
+        private String mediaTypeArray;
 
 
 // Define CONSTRUCTOR
-        public Book (String bookID, String bTitle, String bCode, String cat, String bType, String pub, String Phone, String bPrice)
+        public Book (String bookID, String bTitle, String bAuthor, String isbn, String bGenre, String price, String mediaType)
         {
             this.bookIdArray = bookID;
             this.bookTitleArray = bTitle;
-            this.barcodeArray = bCode;
-            this.bookDateArray = cat;
-            this.categoryArray = bType;
-            this.bookTypeArray = pub;
-            this.publisherArray = pub;
-            this.bookPriceArray = bPrice;
+            this.authorArray = bAuthor;
+            this.isbnArray = isbn;
+            this.genreArray = bGenre;
+            this.priceArray = price;
+            this.mediaTypeArray = mediaType;
         }   
         
-    public String getbookid()
-    {
-        return bookIdArray;
-    }
+        public String getbookid()
+        {
+            return bookIdArray;
+        }
     
-    public String getbooktitle()
-    {
-        return bookTitleArray;
-    }
+        public String getbooktitle()
+        {
+            return bookTitleArray;
+        }
     
-    public String getbarcode()
-    {
-        return barcodeArray;
-    }
+        public String getauthor()
+        {
+            return authorArray;
+        }
     
-    public String getbookday()
-    {
-        return bookDateArray;
-    }
+        public String getisbn()
+        {
+            return isbnArray;
+        }
     
-    public String getcategory()
-    {
-        return categoryArray;
-    }
+        public String getgenre()
+        {
+            return genreArray;
+        }
     
-    public String getbooktype()
-    {
-        return bookTypeArray;
-    }
+        public String getprice()
+        {
+            return priceArray;
+        }
     
-    public String getpublisher()
-    {
-        return publisherArray;
-    }
+        public String getmediaType()
+        {
+            return mediaTypeArray;
+        }
     
-    public String getbookprice()
-    {
-        return bookPriceArray;
-    }
-    
-
-
-
     }
 }
