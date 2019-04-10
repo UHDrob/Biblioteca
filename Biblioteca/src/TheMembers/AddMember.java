@@ -131,8 +131,9 @@ public class AddMember extends javax.swing.JInternalFrame {
         public void save(String fileName) throws FileNotFoundException {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(fileName))) 
         {
-         //   
-         //      
+           ArrayList<Member> members=new ArrayList<Member>();
+         //   for(Member memberList:members)
+         //      pw.println(members.getMember());
         }
 }
         
