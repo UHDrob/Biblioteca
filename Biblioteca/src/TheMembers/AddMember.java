@@ -129,12 +129,20 @@ public class AddMember extends javax.swing.JInternalFrame {
         
         // Mar 29, 2019 Roberto:  Save ArrayList to File
         public void save(String fileName) throws FileNotFoundException {
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream(fileName))) 
+        try(PrintWriter pw=new PrintWriter(new FileOutputStream(fileName)))
         {
-           ArrayList<Member> members=new ArrayList<Member>();
-         //   for(Member memberList:members)
-         //      pw.println(members.getMember());
+            ArrayList<Member> members=new ArrayList<Member>();
+            for(Member memberArrayList:members){
+            pw.println(memberArrayList.getaccount());
+            }
+            pw.close();
+            
         }
+        
+       catch(Exception E)
+       {
+           JOptionPane.showMessageDialog(null, "Record NOT saved");
+       }
 }
         
     /**
@@ -330,6 +338,7 @@ public class AddMember extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // Feb 19, 2019 Roberto: This section will add the new record to the file
         if (checkInputs())    // verify the fields are not empty
