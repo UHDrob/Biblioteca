@@ -131,8 +131,11 @@ public class AllUsers extends javax.swing.JInternalFrame {
         public void save(String fileName) throws FileNotFoundException {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(fileName))) 
         {
-         //   
-         //      
+           ArrayList<Member> users=new ArrayList<Member>();
+            for(Member usersArrayList:users){
+               pw.println(usersArrayList.getaccount());
+            }
+            pw.close();
         }
 }
         
