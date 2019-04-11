@@ -191,7 +191,7 @@ public class Reports extends javax.swing.JFrame
         Calendar c = Calendar.getInstance(); // makes calendar instance
         c.setTime(currentDate); // converts date to calendar
         
-        System.out.println("Todays Date Calendar: " + currentDate);
+        //System.out.println("Todays Date Calendar: " + currentDate);
        
         //============== subtract days from the current date =================//
         c.add(Calendar.DATE, -1);//day prior to current
@@ -212,7 +212,7 @@ public class Reports extends javax.swing.JFrame
             Date due = sdf.parse(dueDate);
             Calendar dueD = Calendar.getInstance();
             dueD.setTime(due);
-            System.out.println("Due date Calendar: " + due);
+            //System.out.println("Due date Calendar: " + due);
             
             if (due.before(currentDateMin1)&& due.after(currentDateMin15))
             {
