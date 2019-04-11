@@ -1,7 +1,6 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To change this template file, choose Too hh
  */
 package TheMembers;
 
@@ -10,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Rob77
+ * @author alansaavedra10
  */
 public class MembersObject 
 {
@@ -21,7 +20,7 @@ public class MembersObject
     public static class  Member
     {
         
- // April 4, 2019 Roberto: Define STATE       (Data Hiding)      
+ // April 4, 2019 Alan Saavedra: Define STATE       (Data Hiding)      
         private String account;
         private String firstName;
         private String lastName;
@@ -31,7 +30,7 @@ public class MembersObject
         private String phone;
         private String status;
 
-// April 4, 2019 Roberto: Define CONSTRUCTOR Member
+// April 4, 2019 Alan Saavedra: Define CONSTRUCTOR Member
         public Member (String Id, String FName, String LName, String DoB, String Gen, String Email, String Phone, String Status)
         {
             this.account = Id;
@@ -45,7 +44,7 @@ public class MembersObject
         }   
 
         
-// April 4, 2019 Roberto: GET methods
+// April 4, 2019 Alan Saavedra: GET methods
         public String getaccount()
         {
             return account;
@@ -79,7 +78,7 @@ public class MembersObject
             return status;
         }
         
- // April 4, 2019 Roberto: SET Methods
+ // April 4, 2019 Alan Saavedra: SET Methods
         public void setaccount(String acct)
         {
             account = acct;

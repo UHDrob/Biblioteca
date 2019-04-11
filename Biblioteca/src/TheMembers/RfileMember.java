@@ -1,7 +1,7 @@
 /*
  * University of Houston - Downtown
  * CS 3300  OOP
- * Roberto Gomez
+ * Alan Saavedra 
  * 
  * Create a program in Java that would read data from a file and display on the console. Following are the requirements:
 1. The code should have two classes. One with main method and second for file operations.
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created Feb 18, 2019
  * Modified: Feb 24,2019
- * @author Roberto Gomez
+ * @author Alan Saavedra 
  * @version 1
  */
 public class RfileMember 

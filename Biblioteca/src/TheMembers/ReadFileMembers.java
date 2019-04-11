@@ -1,7 +1,7 @@
 /*
  * University of Houston - Downtown
  * CS 3318 OOP
- * Roberto Gomez
+ * Alan Saavedra
  *
  * FileOperations.java
  */
@@ -19,13 +19,13 @@ import javax.swing.JOptionPane;
 /**
  * Created: Feb 17, 2019
  * Modified: Mar 23, 2019
- * @author Roberto Gomez
+ * @author Alan Saavedra
  * @version 2
  */
 public class ReadFileMembers 
 {
    
-    // Mar 23, 2019 Roberto : ReadFileMembers set filename and confirm for debugging
+    // Mar 23, 2019 Alan : ReadFileMembers set filename and confirm for debugging
         public void ReadFileMembers()
         {
             // Scanner keyboard = new Scanner(System.in);
@@ -37,9 +37,9 @@ public class ReadFileMembers
             // JOptionPane.showMessageDialog(null, "\nThe file name is: " + fileName);
         
     
-        // Feb 18, 2019 Roberto : Read the data and display on the Console
+        // Feb 18, 2019 Alan : Read the data and display on the Console
       
-        // Mar 23, 3019 Roberto : Intialize fileIn to Empty    
+        // Mar 23, 3019 Alan : Intialize fileIn to Empty    
          Scanner fileIn = null; 
             try
             {

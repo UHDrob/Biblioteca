@@ -29,27 +29,27 @@ import javax.swing.table.JTableHeader;
 /**
  * Created Mar 23 2019
  * Modified April 4, 2019
- * @author Roberto Gomez
+ * @author Alan Saavedra 
  * @version 2
  */
 public class AllUsers extends javax.swing.JInternalFrame {
 
     /**
-     * Feb 19, 2019 Roberto: Creates new form AddMember
+     * Feb 19, 2019 Alan : Creates new form AddMember
      */
     public AllUsers() {
         initComponents();
-        // Feb 20, 2019 Roberto: Update the Table
+        // Feb 20, 2019 Alan : Update the Table
         Show_Members_In_JTable();
     }
     
-    // Feb 20 2019 Roberto: This is the file that has all the data for this package
+    // Feb 20 2019 Alan : This is the file that has all the data for this package
     String filepath = "member.txt";
     private static Scanner x;
     ArrayList<Member> updateList = getListMembers();
     
     
-   // Feb 19, 2019 Roberto: This section search for a Record in the file by Employee ID
+   // Feb 19, 2019 Alan : This section search for a Record in the file by Employee ID
         public static void searchAccount (String searchterm, String filepath) throws FileNotFoundException
         {
             boolean found = false;
@@ -104,7 +104,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
         }
     
     
-        // Feb 19, 2019 Roberto: This section will save the new record in the file
+        // Feb 19, 2019 Alan : This section will save the new record in the file
         public static void saveRecord(String account, String FirstName, String LastName, String Birthday, String Gender, String Email, String Phone, String Status, String FilePath)
         {
             try
@@ -127,7 +127,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
             }
         }
         
-        // Mar 29, 2019 Roberto:  Save ArrayList to File
+        // Mar 29, 2019 Alan :  Save ArrayList to File
         public void save(String fileName) throws FileNotFoundException {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream(fileName))) 
         {
@@ -232,7 +232,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
-        // Feb 19, 2019 Roberto: This section will search by Account
+        // Feb 19, 2019 Alan : This section will search by Account
         String searchterm = txt_searchAccount.getText();
         try {
             searchAccount(searchterm, filepath);
@@ -243,7 +243,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_searchActionPerformed
 
     private void jTable_MembersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_MembersMouseClicked
-        // Mar 26, 2019 Roberto:  Selection from table
+        // Mar 26, 2019 Alan :  Selection from table
         int index = jTable_Members.getSelectedRow();
      
     }//GEN-LAST:event_jTable_MembersMouseClicked
@@ -308,7 +308,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
         
         }
         
-    // Feb 19, 2019 Roberto: For the ArrayList Part C 
+    // Feb 19, 2019 Alan : For the ArrayList Part C 
         public void Show_Members_In_JTable()
     {
         DefaultTableModel model = (DefaultTableModel) jTable_Members.getModel();
@@ -337,7 +337,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
     }
     
   
-      // Mar 23, 2019 Roberto : ReadFileMembers set filename and confirm for debugging
+      // Mar 23, 2019 Alan  : ReadFileMembers set filename and confirm for debugging
         public void ReadFileMembers(String fileName)
         {
 
@@ -375,7 +375,7 @@ public class AllUsers extends javax.swing.JInternalFrame {
 
         }      
         
-         // April 4, 2019 Roberto : WriteFileMembers backt to members.txt
+         // April 4, 2019 Alan  : WriteFileMembers backt to members.txt
         public void WriteFileMembers( String fileName) throws IOException
                 // Write Arraylist X back to members.txt
         {
